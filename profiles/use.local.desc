@@ -56,10 +56,6 @@ app-editors/latexila:latexmk - Install dev-tex/latexmk (used by default for the 
 app-editors/latexila:rubber - Install dev-tex/rubber (can be used for the build tools)
 app-editors/leafpad:emacs - Enable Emacs key theme
 app-editors/mousepad:gtk3 - Use GTK+3 instead of GTK+2
-app-editors/nano:debug - Enable debug messages and assert warnings. Note that these will all be sent straight to stderr rather than some logging facility.
-app-editors/nano:justify - Enable justify/unjustify functions for text formatting.
-app-editors/nano:magic - Add magic file support (sys-apps/file) to automatically detect appropriate syntax highlighting
-app-editors/nano:minimal - Disable all fancy features, including ones that otherwise have a dedicated USE flag (such as spelling).
 app-editors/ne:tinfo - Link against libtinfo from sys-libs/ncurses
 app-editors/neovim:clipboard - Enable clipboard support through a provider
 app-editors/neovim:jemalloc - Use dev-libs/jemalloc for allocations
