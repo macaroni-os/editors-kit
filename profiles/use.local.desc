@@ -2,6 +2,7 @@
 # your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using egencache *
 
+app-editors/atom-bin:system-node - Use node.js system implementation instead of the built-in one.
 app-editors/bluefish:gtk2 - Enable GTK2 instead of GTK3 even if GTK3 is available
 app-editors/bluefish:gtk3 - Enable GTK3 interface (default)
 app-editors/bluefish:gucharmap - Enable gucharmap dictionary plugin
@@ -42,18 +43,8 @@ app-editors/emacs-vcs:toolkit-scroll-bars - Use the selected toolkit's scrollbar
 app-editors/emacs-vcs:wide-int - Prefer wide Emacs integers (typically 62-bit). This option has an effect only on architectures where "long" and "long long" types have different size.
 app-editors/emacs-vcs:xwidgets - Enable use of GTK widgets in Emacs buffers (requires GTK3)
 app-editors/fe:sendmail - Send mail after editor abend
-app-editors/gedit-plugins:charmap - Insert special characters just by clicking on them
-app-editors/gedit-plugins:git - Shows document changes related to git's HEAD
-app-editors/gedit-plugins:terminal - Embed a terminal in the bottom pane
-app-editors/gedit-plugins:zeitgeist - Build the plugin to inject events to gnome-extra/zeitgeist
-app-editors/gvim:gtk3 - Enable GTK+3 interface
-app-editors/gvim:luajit - Use dev-lang/luajit instead of dev-lang/lua
-app-editors/gvim:netbeans - Include netbeans external editor integration support
-app-editors/gvim:racket - Enable support for Scheme using dev-scheme/racket
 app-editors/jasspa-microemacs:nanoemacs - Build NanoEmacs instead of MicroEmacs
 app-editors/joe:xterm - Enable full xterm clipboard support
-app-editors/latexila:latexmk - Install dev-tex/latexmk (used by default for the build tools)
-app-editors/latexila:rubber - Install dev-tex/rubber (can be used for the build tools)
 app-editors/leafpad:emacs - Enable Emacs key theme
 app-editors/mousepad:gtk3 - Use GTK+3 instead of GTK+2
 app-editors/ne:tinfo - Link against libtinfo from sys-libs/ncurses
@@ -67,11 +58,9 @@ app-editors/tea:aspell - Enable spellchecking using app-text/aspell
 app-editors/tea:hunspell - Enable spellchecking using app-text/hunspell
 app-editors/vim:X - Link console vim against X11 libraries to enable title and clipboard features in xterm
 app-editors/vim:luajit - Use dev-lang/luajit instead of dev-lang/lua
-app-editors/vim:racket - Enable support for Scheme using dev-scheme/racket
+app-editors/vim:racket - Enable support for Scheme using dev-lang/racket
 app-editors/vim:vim-pager - Install vimpager and vimmanpager links
-app-editors/vim-qt:lto - Enable configure workaround for -flto
-app-editors/vim-qt:luajit - Use dev-lang/luajit instead of dev-lang/lua
-app-editors/vim-qt:racket - Enable support for Scheme using dev-scheme/racket
+app-editors/vis:tre - more memory efficient regex search using dev-libs/tre
 app-editors/xemacs:athena - Chooses the MIT Athena widget set
 app-editors/xemacs:dnd - Enables support for the x11-libs/dnd drag-n-drop library
 app-editors/xemacs:eolconv - Support detection and translation of newline conventions
