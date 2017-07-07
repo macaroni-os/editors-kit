@@ -1,5 +1,6 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=6
 
@@ -38,8 +39,7 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="
 	gtk2? ( !gtk3 !gucharmap )
-	gtk3? ( !gtk2 )
-	python? ( ${PYTHON_REQUIRED_USE} )"
+	gtk3? ( !gtk2 )"
 
 S="${WORKDIR}/${MY_P}"
 

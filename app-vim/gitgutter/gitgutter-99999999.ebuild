@@ -1,5 +1,6 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=6
 inherit vim-plugin
@@ -20,6 +21,6 @@ RDEPEND="dev-vcs/git"
 
 src_prepare() {
 	default
-	rm LICENCE README* screenshot.png || die
+	rm README* screenshot.png || die
 	rm -rf test || die
 }

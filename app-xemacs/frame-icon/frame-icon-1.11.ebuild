@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-
-EAPI=6
+# $Id$
 
 SLOT="0"
+IUSE=""
 DESCRIPTION="Set up mode-specific icons for each frame under XEmacs"
-XEMACS_PKG_CAT="standard"
+PKG_CAT="standard"
 
 KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 

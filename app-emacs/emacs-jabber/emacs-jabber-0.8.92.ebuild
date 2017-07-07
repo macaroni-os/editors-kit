@@ -1,5 +1,6 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=5
 
@@ -14,9 +15,8 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc sparc x86"
 
-RDEPEND="app-emacs/hexrgb"
-DEPEND="${RDEPEND}
-	sys-apps/texinfo"
+DEPEND="app-emacs/hexrgb"
+RDEPEND="${DEPEND}"
 
 SITEFILE="50${PN}-gentoo.el"
 ELISP_TEXINFO="jabber.texi"

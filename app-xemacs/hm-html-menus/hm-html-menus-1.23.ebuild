@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-
-EAPI=6
+# $Id$
 
 SLOT="0"
+IUSE=""
 DESCRIPTION="HTML editing"
 SRC_URI="http://ftp.xemacs.org/packages/hm--html-menus-${PV}-pkg.tar.gz"
-XEMACS_PKG_CAT="standard"
+PKG_CAT="standard"
 
 RDEPEND="app-xemacs/dired
 app-xemacs/xemacs-base

@@ -1,5 +1,6 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -14,7 +15,7 @@ IUSE=""
 
 RDEPEND="|| ( app-editors/vim[python,${PYTHON_USEDEP}] app-editors/gvim[python,${PYTHON_USEDEP}] )
 	${PYTHON_DEPS}
-	dev-python/markdown[${PYTHON_USEDEP}]"
+	dev-python/markdown"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"

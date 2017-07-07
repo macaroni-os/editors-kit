@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-
-EAPI=6
+# $Id$
 
 SLOT="0"
+IUSE=""
 DESCRIPTION="Fundamental lisp files for providing email support"
-XEMACS_PKG_CAT="standard"
+PKG_CAT="standard"
 
-XEMACS_EXPERIMENTAL="true"
+EXPERIMENTAL=true
 
 RDEPEND="app-xemacs/xemacs-eterm
 app-xemacs/xemacs-base

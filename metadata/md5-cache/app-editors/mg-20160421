@@ -10,4 +10,4 @@ RDEPEND=sys-libs/ncurses:0 !elibc_FreeBSD? ( >=dev-libs/libbsd-0.7.0 )
 SLOT=0
 SRC_URI=http://homepage.boetes.org/software/mg/mg-20160421.tar.gz
 _eclasses_=multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
-_md5_=b2571525491c6b9785b01d776ac22206
+_md5_=db62778dc686b9464a2e21a57539fedf

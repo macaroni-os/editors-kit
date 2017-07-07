@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-
-EAPI=6
+# $Id$
 
 SLOT="0"
+IUSE=""
 DESCRIPTION="MULE: Quail.  All non-English and non-Japanese language support"
-XEMACS_PKG_CAT="mule"
+PKG_CAT="mule"
 
 RDEPEND="app-xemacs/mule-base
 app-xemacs/fsf-compat

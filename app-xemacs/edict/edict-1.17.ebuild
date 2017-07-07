@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-
-EAPI=6
+# $Id$
 
 SLOT="0"
+IUSE=""
 DESCRIPTION="MULE: Lisp Interface to EDICT, Kanji Dictionary"
-XEMACS_PKG_CAT="mule"
+PKG_CAT="mule"
 
 RDEPEND="app-xemacs/mule-base
 app-xemacs/xemacs-base

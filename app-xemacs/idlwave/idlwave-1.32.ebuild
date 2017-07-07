@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-
-EAPI=6
+# $Id$
 
 SLOT="0"
+IUSE=""
 DESCRIPTION="Editing and Shell mode for the Interactive Data Language"
-XEMACS_PKG_CAT="standard"
+PKG_CAT="standard"
 
 RDEPEND="app-xemacs/fsf-compat
 app-xemacs/xemacs-base

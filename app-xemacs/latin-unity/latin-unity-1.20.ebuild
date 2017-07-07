@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-
-EAPI=6
+# $Id$
 
 SLOT="0"
+IUSE=""
 DESCRIPTION="MULE: find single ISO 8859 character set to encode a buffer"
-XEMACS_PKG_CAT="mule"
+PKG_CAT="mule"
 
 RDEPEND="app-xemacs/mule-base
 app-xemacs/latin-euro-standards
