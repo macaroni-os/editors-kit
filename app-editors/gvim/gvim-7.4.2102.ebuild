@@ -3,10 +3,10 @@
 # $Id$
 
 EAPI=6
-VIM_VERSION="8.0"
+VIM_VERSION="7.4"
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 PYTHON_REQ_USE=threads
-inherit eutils vim-doc flag-o-matic fdo-mime gnome2-utils versionator bash-completion-r1 prefix python-r1
+inherit eutils vim-doc flag-o-matic fdo-mime versionator bash-completion-r1 prefix python-r1
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
@@ -23,7 +23,7 @@ HOMEPAGE="http://www.vim.org/ https://github.com/vim/vim"
 
 SLOT="0"
 LICENSE="vim"
-IUSE="acl aqua cscope debug gnome gtk gtk3 lua luajit motif neXt netbeans nls perl python racket ruby selinux session tcl"
+IUSE="acl aqua cscope debug gnome gtk lua luajit motif neXt netbeans nls perl python racket ruby selinux session tcl"
 REQUIRED_USE="
 	luajit? ( lua )
 	python? (
@@ -37,28 +37,20 @@ RDEPEND="
 	~app-editors/vim-core-${PV}
 	>=app-eselect/eselect-vi-1.1
 	>=sys-libs/ncurses-5.2-r2:0=
-	x11-libs/libICE
-	x11-libs/libSM
 	x11-libs/libXext
 	x11-libs/libXt
 	acl? ( kernel_linux? ( sys-apps/acl ) )
 	!aqua? (
-		gtk3? (
-			x11-libs/gtk+:3
+		gtk? (
+			>=x11-libs/gtk+-2.6:2
 			x11-libs/libXft
+			gnome? ( >=gnome-base/libgnomeui-2.6 )
 		)
-		!gtk3? (
-			gtk? (
-				>=x11-libs/gtk+-2.6:2
-				x11-libs/libXft
-				gnome? ( >=gnome-base/libgnomeui-2.6 )
-			)
-			!gtk? (
-				motif? ( >=x11-libs/motif-2.3:0 )
-				!motif? (
-					neXt? ( x11-libs/neXtaw )
-					!neXt? ( x11-libs/libXaw )
-				)
+		!gtk? (
+			motif? ( >=x11-libs/motif-2.3:0 )
+			!motif? (
+				neXt? ( x11-libs/neXtaw )
+				!neXt? ( x11-libs/libXaw )
 			)
 		)
 	)
@@ -117,12 +109,12 @@ src_prepare() {
 		"${S}"/runtime/doc/tagsrch.txt \
 		"${S}"/runtime/doc/usr_29.txt \
 		"${S}"/runtime/menu.vim \
-		"${S}"/src/configure.ac || die 'sed failed'
+		"${S}"/src/configure.in || die 'sed failed'
 
 	# Don't be fooled by /usr/include/libc.h.  When found, vim thinks
 	# this is NeXT, but it's actually just a file in dev-libs/9libs
 	# This fixes bug 43885 (20 Mar 2004 agriffis)
-	sed -i 's/ libc\.h / /' "${S}"/src/configure.ac || die 'sed failed'
+	sed -i 's/ libc\.h / /' "${S}"/src/configure.in || die 'sed failed'
 
 	# gcc on sparc32 has this, uhm, interesting problem with detecting EOF
 	# correctly. To avoid some really entertaining error messages about stuff
@@ -146,7 +138,7 @@ src_prepare() {
 			"${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
 	fi
 
-	eapply_user
+	default
 }
 
 src_configure() {
@@ -162,7 +154,7 @@ src_configure() {
 	replace-flags -O3 -O2
 
 	# Fix bug 18245: Prevent "make" from the following chain:
-	# (1) Notice configure.ac is newer than auto/configure
+	# (1) Notice configure.in is newer than auto/configure
 	# (2) Rebuild auto/configure
 	# (3) Notice auto/configure is newer than auto/config.mk
 	# (4) Run ./configure (with wrong args) to remake auto/config.mk
@@ -224,12 +216,11 @@ src_configure() {
 
 	# gvim's GUI preference order is as follows:
 	# aqua                          CARBON (not tested)
-	# -aqua gtk3                    GTK3
-	# -aqua -gtk3 gnome             GNOME2
-	# -aqua -gtk3 -gnome gtk        GTK2
-	# -aqua -gtk -gtk3 motif        MOTIF
-	# -aqua -gtk -gtk3 -motif neXt  NEXTAW
-	# -aqua -gtk -gtk3 -motif -neXt ATHENA
+	# -aqua gtk gnome               GNOME2
+	# -aqua gtk -gnome              GTK2
+	# -aqua -gtk  motif             MOTIF
+	# -aqua -gtk -motif neXt        NEXTAW
+	# -aqua -gtk -motif -neXt       ATHENA
 	echo ; echo
 	if use aqua ; then
 		einfo "Building gvim with the Carbon GUI"
@@ -237,10 +228,6 @@ src_configure() {
 			--enable-darwin
 			--enable-gui=carbon
 		)
-	elif use gtk3 ; then
-		myconf+=( --enable-gtk3-check )
-		einfo "Building gvim with the gtk+-3 GUI"
-		myconf+=( --enable-gui=gtk3 )
 	elif use gtk ; then
 		myconf+=( --enable-gtk2-check )
 		if use gnome ; then
@@ -262,10 +249,10 @@ src_configure() {
 	fi
 	echo ; echo
 
-	# let package manager strip binaries
+	# Let Portage do the stripping. Some people like that.
 	export ac_cv_prog_STRIP="$(type -P true ) faking strip"
 
-	# keep prefix env contained within the EPREFIX
+	# Keep Gentoo Prefix env contained within the EPREFIX
 	use prefix && myconf+=( --without-local-dir )
 
 	if [[ ${CHOST} == *-interix* ]]; then
@@ -359,8 +346,6 @@ src_install() {
 	dosym gvim /usr/bin/rgvim
 	dosym gvim /usr/bin/rgview
 
-	emake -C src DESTDIR="${D}" DATADIR="${EPREFIX}"/usr/share install-icons
-
 	dodir /usr/share/man/man1
 	echo ".so vim.1" > "${ED}"/usr/share/man/man1/gvim.1
 	echo ".so vim.1" > "${ED}"/usr/share/man/man1/gview.1
@@ -370,13 +355,16 @@ src_install() {
 	newins "${FILESDIR}"/gvimrc-r1 gvimrc
 	eprefixify "${ED}"/etc/vim/gvimrc
 
+	newmenu "${FILESDIR}"/gvim.desktop-r2 gvim.desktop
+	doicon "${FILESDIR}"/gvim.xpm
 	doicon -s scalable "${FILESDIR}"/gvim.svg
 
 	# bash completion script, bug #79018.
 	newbashcomp "${FILESDIR}"/${PN}-completion ${PN}
 
-	# don't install vim desktop file
-	rm "${ED}"/usr/share/applications/vim.desktop || die "failed to remove vim.desktop"
+	# We shouldn't be installing the ex or view man page symlinks, as they
+	# are managed by eselect-vi
+	rm -f "${ED}"/usr/share/man/man1/{ex,view}.1
 }
 
 pkg_postinst() {
@@ -384,10 +372,7 @@ pkg_postinst() {
 	update_vim_helptags
 
 	# Update fdo mime stuff, bug #78394
-	fdo-mime_desktop_database_update
-
-	# Update icon cache
-	gnome2_icon_cache_update
+	fdo-mime_mime_database_update
 
 	# Make convenience symlinks
 	update_vim_symlinks
@@ -398,10 +383,7 @@ pkg_postrm() {
 	update_vim_helptags
 
 	# Update fdo mime stuff, bug #78394
-	fdo-mime_desktop_database_update
-
-	# Update icon cache
-	gnome2_icon_cache_update
+	fdo-mime_mime_database_update
 
 	# Make convenience symlinks
 	update_vim_symlinks
