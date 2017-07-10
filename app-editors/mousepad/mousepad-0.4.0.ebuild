@@ -1,12 +1,11 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit gnome2-utils xfconf
 
 DESCRIPTION="GTK+-based editor for the Xfce Desktop Environment"
-HOMEPAGE="http://goodies.xfce.org/projects/applications/start"
+HOMEPAGE="https://goodies.xfce.org/projects/applications/start"
 SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

@@ -1,6 +1,5 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -15,10 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 RESTRICT="test"
 
-DEPEND=">=app-emacs/muse-3.02.6a
+RDEPEND=">=app-emacs/muse-3.02.6a
 	app-emacs/bbdb
 	app-emacs/emacs-w3m"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	sys-apps/texinfo"
 PDEPEND="app-emacs/remember"
 
 SITEFILE="80${PN}-gentoo.el"
