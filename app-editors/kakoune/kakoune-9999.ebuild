@@ -1,5 +1,6 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=6
 
@@ -24,7 +25,7 @@ DEPEND="
 	${RDEPEND}
 "
 
-PATCHES=( "${FILESDIR}/${PN}-0_pre20170523-makefile.patch" )
+PATCHES=( "${FILESDIR}/${PN}-0_pre20161111-makefile.patch" )
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then

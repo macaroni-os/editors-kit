@@ -1,5 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=5
 NEED_EMACS=24
@@ -16,7 +17,7 @@ SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz
 
 LICENSE="GPL-3+ FDL-1.3+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ppc x86"
 
 # Free alternatives first, otherwise follow the ordering in the upstream
 # chess-default-engine (in chess.el). Rearrange chess-default-engine in

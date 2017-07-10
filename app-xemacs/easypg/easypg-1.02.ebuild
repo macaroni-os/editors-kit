@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-
-EAPI=6
+# $Id$
 
 SLOT="0"
+IUSE=""
 DESCRIPTION="GnuPG interface for Emacs"
-XEMACS_PKG_CAT="standard"
+PKG_CAT="standard"
 
 KEYWORDS="~amd64"
 

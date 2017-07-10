@@ -1,5 +1,6 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
@@ -9,21 +10,15 @@ inherit vim-plugin versionator python-single-r1
 MY_REV="788-git2ef9956"
 MY_P="${PN}-$( replace_version_separator 3 - ).${MY_REV}"
 
-DESCRIPTION="A comprehensive set of tools to view, edit and compile LaTeX documents"
+DESCRIPTION="vim plugin: a comprehensive set of tools to view, edit and compile LaTeX documents"
 HOMEPAGE="http://vim-latex.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="vim"
 KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
 IUSE="html python"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="
-	${PYTHON_DEPS}
-	|| (
-		app-editors/vim[python?]
-		app-editors/gvim[python?]
-	)
+RDEPEND="|| ( app-editors/vim[python?] app-editors/gvim[python?] )
 	virtual/latex-base
 	!app-vim/vimtex"
 

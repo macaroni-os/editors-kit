@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
-EAPI="6"
+EAPI="4"
 
-inherit toolchain-funcs
+inherit eutils toolchain-funcs
 
 DESCRIPTION="An easy to use text editor"
-#HOMEPAGE="http://mahon.cwx.net/ http://www.users.uswest.net/~hmahon/"
-HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI="mirror://gentoo/${P}.tar.gz"
+HOMEPAGE="http://mahon.cwx.net/"
+SRC_URI="http://mahon.cwx.net/sources/${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
@@ -18,40 +18,36 @@ IUSE="X"
 RDEPEND="X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-ae-location.patch
-	"${FILESDIR}"/${PN}-Wformat-security.patch
-)
-DOCS=( Changes README.${PN} ${PN}.i18n.guide ${PN}.msg )
-
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-*.diff
+
 	sed -i \
 		-e "s/make -/\$(MAKE) -/g" \
 		-e "/^buildaee/s/$/ localaee/" \
 		-e "/^buildxae/s/$/ localxae/" \
-		Makefile
+		Makefile || die
 
 	sed -i \
 		-e "s/\([\t ]\)cc /\1\\\\\$(CC) /" \
 		-e "/CFLAGS =/s/\" >/ \\\\\$(LDFLAGS)\" >/" \
 		-e "/other_cflag/s/ \${strip_option}//" \
-		create.mk.{aee,xae}
+		create.mk.{aee,xae} || die
 
-	default
+	tc-export CC
 }
 
 src_compile() {
 	local target="aee"
 	use X && target="both"
 
-	emake CC="$(tc-getCC)" ${target}
+	emake ${target}
 }
 
 src_install() {
 	dobin ${PN}
 	dosym ${PN} /usr/bin/rae
 	doman ${PN}.1
-	einstalldocs
+	dodoc Changes README.${PN} ${PN}.i18n.guide ${PN}.msg
 
 	insinto /usr/share/${PN}
 	doins help.ae

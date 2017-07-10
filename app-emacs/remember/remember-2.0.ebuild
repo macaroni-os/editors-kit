@@ -1,5 +1,6 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=5
 
@@ -18,8 +19,7 @@ RESTRICT="test"
 
 RDEPEND="bbdb? ( app-emacs/bbdb )
 	planner? ( app-emacs/planner )"
-DEPEND="${RDEPEND}
-	sys-apps/texinfo"
+DEPEND="${RDEPEND}"
 
 ELISP_PATCHES="${PN}-1.9-make-elc.patch"
 SITEFILE="50${PN}-gentoo.el"

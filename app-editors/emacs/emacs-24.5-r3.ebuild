@@ -1,5 +1,6 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=6
 
@@ -8,15 +9,15 @@ inherit autotools elisp-common eutils flag-o-matic multilib readme.gentoo-r1
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 SRC_URI="mirror://gnu/emacs/${P}.tar.xz
-	https://dev.gentoo.org/~ulm/emacs/${P}-patches-3.tar.xz"
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-2.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="24"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="acl alsa aqua athena dbus games gconf gfile gif gpm gsettings gtk +gtk3 gzip-el hesiod imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif pax_kernel png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm zlib"
 REQUIRED_USE="?? ( aqua X )"
 
-RDEPEND="sys-libs/ncurses:0=
+RDEPEND="sys-libs/ncurses:0
 	>=app-eselect/eselect-emacs-1.16
 	>=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 	net-libs/liblockfile
@@ -29,7 +30,7 @@ RDEPEND="sys-libs/ncurses:0=
 	kerberos? ( virtual/krb5 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
 	selinux? ( sys-libs/libselinux )
-	ssl? ( net-libs/gnutls:0= )
+	ssl? ( net-libs/gnutls )
 	zlib? ( sys-libs/zlib )
 	X? (
 		x11-libs/libXmu
@@ -69,7 +70,10 @@ RDEPEND="sys-libs/ncurses:0=
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )
-	pax_kernel? ( sys-apps/attr )"
+	pax_kernel? (
+		sys-apps/attr
+		sys-apps/paxctl
+	)"
 
 RDEPEND="${RDEPEND}
 	!<app-editors/emacs-vcs-${PV}"
@@ -91,7 +95,6 @@ src_prepare() {
 		|| die "unable to sed ctags.1"
 
 	AT_M4DIR=m4 eautoreconf
-	touch src/stamp-h.in || die
 }
 
 src_configure() {
@@ -140,7 +143,7 @@ src_configure() {
 				"USE flag \"m17n-lib\" has no effect if \"xft\" is not set."
 		fi
 
-		local f line
+		local f
 		if use gtk; then
 			einfo "Configuring to build with GIMP Toolkit (GTK+)"
 			while read line; do ewarn "${line}"; done <<-EOF

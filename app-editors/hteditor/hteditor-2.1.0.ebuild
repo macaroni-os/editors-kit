@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
-EAPI=6
+EAPI=5
 
 inherit toolchain-funcs
 
@@ -13,10 +14,10 @@ SRC_URI="mirror://sourceforge/hte/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="X"
 
-RDEPEND="sys-libs/ncurses:0=
+RDEPEND="sys-libs/ncurses
 	X? ( x11-libs/libX11 )
 	>=dev-libs/lzo-2"
 DEPEND="${RDEPEND}
@@ -26,8 +27,6 @@ DEPEND="${RDEPEND}
 DOCS=( AUTHORS ChangeLog KNOWNBUGS README TODO )
 
 S=${WORKDIR}/${MY_P}
-
-PATCHES=("${FILESDIR}"/${P}-gcc-7.patch)
 
 src_configure() {
 	econf \
@@ -43,8 +42,8 @@ src_install() {
 	#For prefix
 	chmod u+x "${S}/install-sh"
 
-	local HTML_DOCS="doc/*.html"
-	doinfo doc/*.info
-
 	default
+
+	dohtml doc/*.html
+	doinfo doc/*.info
 }
