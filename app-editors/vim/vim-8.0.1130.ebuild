@@ -353,3 +353,4 @@ pkg_postrm() {
      # Make convenience symlinks
      update_vim_symlinks
 }
+
