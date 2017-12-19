@@ -222,3 +222,4 @@ pkg_postrm() {
      # Update documentation tags (from vim-doc.eclass)
      update_vim_helptags
 }
+

@@ -354,3 +354,4 @@ pkg_postrm() {
      update_vim_symlinks
 }
 
+
