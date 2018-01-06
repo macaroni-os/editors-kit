@@ -52,6 +52,7 @@ app-editors/neovim:clipboard - Enable clipboard support through a provider
 app-editors/neovim:jemalloc - Use dev-libs/jemalloc for allocations
 app-editors/neovim:luajit - Use dev-lang/luajit instead of dev-lang/lua
 app-editors/neovim:nvimpager - Install nvimpager symlink to less.sh macro
+app-editors/neovim:remote - Enable support for remote options using nvr
 app-editors/neovim:tui - Build the neovim unix tui
 app-editors/pluma:gtk3 - Build with GTK+3 instead of GTK+2
 app-editors/qhexedit2:gui - Install Qt5 hex editor
