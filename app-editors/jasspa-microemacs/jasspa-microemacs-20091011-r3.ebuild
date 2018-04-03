@@ -1,11 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs xdg-utils
+
 MACROS_PV="20091017"
-
 DESCRIPTION="Jasspa Microemacs"
 HOMEPAGE="http://www.jasspa.com/"
 SRC_URI="http://www.jasspa.com/release_20090909/jasspa-mesrc-${PV}.tar.gz
@@ -16,39 +16,45 @@ SRC_URI="http://www.jasspa.com/release_20090909/jasspa-mesrc-${PV}.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="nanoemacs X xpm"
 
-RDEPEND="sys-libs/ncurses
-	X? ( x11-libs/libX11
-		xpm? ( x11-libs/libXpm ) )
+RDEPEND="sys-libs/ncurses:0=
+	X? (
+		x11-libs/libX11
+		xpm? ( x11-libs/libXpm )
+	)
 	nanoemacs? ( !app-editors/ne )"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	X? ( x11-libs/libXt
-		x11-base/xorg-proto )"
+	X? (
+		x11-base/xorg-proto
+		x11-libs/libXt
+	)"
 
-S="${WORKDIR}/me${PV:2}/src"
+S="${WORKDIR}/me${PV:2}"
+PATCHES=(
+	"${FILESDIR}"/${PV}-ncurses.patch
+	"${FILESDIR}"/${PV}-linux3.patch
+)
 
 src_unpack() {
 	unpack jasspa-mesrc-${PV}.tar.gz
 	if ! use nanoemacs; then
-		mkdir "${WORKDIR}/jasspa"
-		cd "${WORKDIR}/jasspa"
+		mkdir "${WORKDIR}"/jasspa || die
+		cd "${WORKDIR}"/jasspa || die
 		# everything except jasspa-mesrc
 		unpack ${A/jasspa-mesrc-${PV}.tar.gz/}
 	fi
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PV}-ncurses.patch"
-	epatch "${FILESDIR}/${PV}-linux3.patch"
-
+	default
 	# allow for some variables to be passed to make
 	sed -i -e \
 		'/make/s/\$OPTIONS/& CC="$CC" COPTIMISE="$CFLAGS" LDFLAGS="$LDFLAGS" CONSOLE_LIBS="$CONSOLE_LIBS" STRIP=true/' \
-		build || die "sed failed"
+		src/build || die "sed failed"
 }
 
 src_compile() {
@@ -58,6 +64,7 @@ src_compile() {
 	use X && type=cw
 	use xpm || export XPM_INCLUDE=.		# prevent Xpm autodetection
 
+	cd src || die
 	CC="$(tc-getCC)" \
 	CONSOLE_LIBS="$("$(tc-getPKG_CONFIG)" --libs ncurses)" \
 	./build ${me} \
@@ -70,14 +77,25 @@ src_install() {
 	local me=me type=c
 	use nanoemacs && me=ne
 	use X && type=cw
-	newbin ${me}${type} ${me}
+	newbin src/${me}${type} ${me}
 
 	if ! use nanoemacs; then
 		keepdir /usr/share/jasspa/site
 		insinto /usr/share
-		doins -r "${WORKDIR}/jasspa"
-		use X && domenu "${FILESDIR}/${PN}.desktop"
+		doins -r "${WORKDIR}"/jasspa
+		if use X; then
+			insinto /usr/share/applications
+			doins "${FILESDIR}"/${PN}.desktop
+		fi
 	fi
 
-	dodoc ../faq.txt ../readme.txt ../change.log
+	dodoc faq.txt readme.txt change.log
+}
+
+pkg_postinst() {
+	use X && xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	use X && xdg_desktop_database_update
 }
