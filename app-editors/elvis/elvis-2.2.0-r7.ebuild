@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,6 @@ RDEPEND="
 	sys-libs/ncurses:0=
 	app-eselect/eselect-vi
 	X? (
-		>=x11-proto/xproto-7.0.4
 		>=x11-libs/libX11-1.0.0
 		>=x11-libs/libXt-1.0.0
 		>=x11-libs/libXpm-3.5.4.2
@@ -29,6 +28,7 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
+	X? ( x11-base/xorg-proto )
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
