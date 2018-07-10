@@ -8,5 +8,5 @@ LICENSE=GPL-2+ GPL-3+ Texinfo-manual
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=http://ess.r-project.org/downloads/ess/ess-17.11.tgz
-_eclasses_=elisp	a81e6492b372e62097c386889201a424	elisp-common	23f47b2e1de7abf387105eddd1318738	readme.gentoo-r1	2b27b7fcc73685ec7e0456c3b48a2fff
+_eclasses_=elisp	e1ffe92f2ea23bdc3ff9304ed2c26ecc	elisp-common	23f47b2e1de7abf387105eddd1318738	readme.gentoo-r1	2b27b7fcc73685ec7e0456c3b48a2fff
 _md5_=8b0cff49eef44d3a0c91de39c8f88668

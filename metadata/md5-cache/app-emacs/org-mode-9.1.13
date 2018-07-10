@@ -10,5 +10,5 @@ RDEPEND=>=virtual/emacs-24
 RESTRICT=test
 SLOT=0
 SRC_URI=http://orgmode.org/org-9.1.13.tar.gz
-_eclasses_=elisp	a81e6492b372e62097c386889201a424	elisp-common	23f47b2e1de7abf387105eddd1318738	readme.gentoo-r1	2b27b7fcc73685ec7e0456c3b48a2fff
+_eclasses_=elisp	e1ffe92f2ea23bdc3ff9304ed2c26ecc	elisp-common	23f47b2e1de7abf387105eddd1318738	readme.gentoo-r1	2b27b7fcc73685ec7e0456c3b48a2fff
 _md5_=5b7397f1b2c2970d4861a32b8a8d683f
