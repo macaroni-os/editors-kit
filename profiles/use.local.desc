@@ -32,6 +32,7 @@ app-editors/emacs-vcs:gsettings - Use gsettings (dev-libs/glib) to read the syst
 app-editors/emacs-vcs:gtk3 - Prefer version 3 of the GIMP Toolkit to version 2 (x11-libs/gtk+)
 app-editors/emacs-vcs:gzip-el - Compress bundled Emacs Lisp source
 app-editors/emacs-vcs:imagemagick - Use media-gfx/imagemagick for image processing
+app-editors/emacs-vcs:json - Compile with native JSON support using dev-libs/jansson
 app-editors/emacs-vcs:libxml2 - Use dev-libs/libxml2 to parse XML instead of the internal Lisp implementations
 app-editors/emacs-vcs:mailutils - Retrieve e-mail using net-mail/mailutils instead of the internal movemail substitute
 app-editors/emacs-vcs:source - Install C source files and make them available for find-function
