@@ -2,7 +2,6 @@
 # your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using egencache *
 
-app-editors/atom-bin:system-node - Use node.js system implementation instead of the built-in one.
 app-editors/bluefish:gtk2 - Enable GTK2 instead of GTK3 even if GTK3 is available
 app-editors/bluefish:gtk3 - Enable GTK3 interface (default)
 app-editors/bluefish:gucharmap - Enable gucharmap dictionary plugin

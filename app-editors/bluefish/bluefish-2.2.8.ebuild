@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools gnome2-utils python-single-r1 xdg-utils
+inherit gnome2-utils python-single-r1 xdg-utils
 
 MY_P=${P/_/-}
 
@@ -14,18 +14,15 @@ SRC_URI="http://www.bennewitz.com/bluefish/stable/source/${MY_P}.tar.bz2"
 HOMEPAGE="http://bluefish.openoffice.nl/"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 SLOT="0"
-IUSE="+gtk3 gucharmap nls python spell"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="gtk2 +gtk3 gucharmap nls python spell"
 
 RDEPEND="
 	sys-libs/zlib
-	!gtk3? ( x11-libs/gtk+:2 )
-	gtk3? (
-		x11-libs/gtk+:3
-		gucharmap? ( gnome-extra/gucharmap:2.90 )
-	)
+	gtk2? ( x11-libs/gtk+:2 )
+	gtk3? ( x11-libs/gtk+:3 )
+	gucharmap? ( gnome-extra/gucharmap:2.90 )
 	python? ( ${PYTHON_DEPS} )
 	spell? ( app-text/enchant )"
 DEPEND="${RDEPEND}
@@ -38,38 +35,35 @@ DEPEND="${RDEPEND}
 		dev-util/intltool
 	)"
 
+REQUIRED_USE="
+	gtk2? ( !gtk3 !gucharmap )
+	gtk3? ( !gtk2 )
+	python? ( ${PYTHON_REQUIRED_USE} )"
+
 S="${WORKDIR}/${MY_P}"
 
 # there actually is just some broken manpage checkup -> not bother
 RESTRICT="test"
 
 pkg_setup() {
-	if ! use gtk3 && use gucharmap ; then
-		ewarn "gucharmap USE flag requires the gtk3 USE flag being enabled."
-		ewarn "Disabling charmap plugin."
-	fi
-
 	use python && python-single-r1_pkg_setup
 }
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2.2.9-charmap_configure.patch"
-)
+# Never eautoreconf this package as gettext breaks completely (no translations
+# even if it compiles afterwards)!
 
-# eautoreconf seems to no longer kill translation files.
 src_prepare() {
 	default
-	eautoreconf
 	sed -i 's:gzip -n $< -c:gzip -n -c $<:' data/bflib/Makefile.* || die "Cannot fix makefile"
 }
 
 src_configure() {
 	econf \
+		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--disable-dependency-tracking \
 		--disable-update-databases \
 		--disable-xml-catalog-update \
-		$(use_with !gtk3 gtk2) \
-		$(usex gtk3 "$(use_with gucharmap charmap)" '--without-charmap') \
+		$(use_with gtk2 ) \
 		$(use_enable nls) \
 		$(use_enable spell spell-check) \
 		$(use_enable python)
