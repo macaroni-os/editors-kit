@@ -11,7 +11,6 @@ app-vim/editorconfig-vim python_single_target_python2_7
 app-vim/gundo python_single_target_python2_7
 app-vim/notes python_single_target_python2_7
 app-vim/pydoc python_single_target_python2_7
-app-vim/python-mode python_single_target_python2_7
 app-vim/slimv python_single_target_python2_7
 app-vim/splice python_single_target_python2_7
 app-vim/vim-latex python_single_target_python2_7
