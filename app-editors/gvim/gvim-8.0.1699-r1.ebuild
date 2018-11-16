@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE="threads"
 USE_RUBY="ruby23 ruby24 ruby25"
 
-inherit vim-doc flag-o-matic xdg-utils gnome2-utils bash-completion-r1 prefix python-single-r1 ruby-single
+inherit vim-doc flag-o-matic xdg-utils gnome2-utils versionator bash-completion-r1 prefix python-single-r1 ruby-single
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
@@ -25,10 +25,10 @@ HOMEPAGE="https://vim.sourceforge.io/ https://github.com/vim/vim"
 SLOT="0"
 LICENSE="vim"
 IUSE="acl aqua cscope debug gnome gtk gtk3 lua luajit motif neXt netbeans nls perl python racket ruby selinux session tcl"
+
 REQUIRED_USE="
 	luajit? ( lua )
-	python? ( ${PYTHON_REQUIRED_USE} )
-"
+	python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	~app-editors/vim-core-${PV}
@@ -70,14 +70,14 @@ RDEPEND="
 	ruby? ( ${RUBY_DEPS} )
 	selinux? ( sys-libs/libselinux )
 	session? ( x11-libs/libSM )
-	tcl? ( dev-lang/tcl:0= )
-"
-DEPEND="${RDEPEND}
+	tcl? ( dev-lang/tcl:0= )"
+
+DEPEND="
+	${RDEPEND}
 	dev-util/ctags
 	sys-devel/autoconf
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
-"
+	nls? ( sys-devel/gettext )"
 
 S=${WORKDIR}/vim-${PV}
 
