@@ -1,17 +1,17 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-VIM_VERSION="8.0"
+VIM_VERSION="8.1"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE=threads
 inherit eutils vim-doc flag-o-matic fdo-mime versionator bash-completion-r1 python-r1
 
 if [[ ${PV} == 9999* ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/vim/vim.git"
+    inherit git-r3
+    EGIT_REPO_URI="https://github.com/vim/vim.git"
 else
-	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="*"
+    SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+    KEYWORDS="*"
 fi
 
 DESCRIPTION="Vim, an improved vi-style text editor"
@@ -21,23 +21,23 @@ SLOT="0"
 LICENSE="vim"
 IUSE="X acl cscope debug gpm lua luajit minimal nls perl python racket ruby selinux tcl vim-pager"
 REQUIRED_USE="
-	luajit? ( lua )
-	python? (
-	    || ( $(python_gen_useflags '*') )
-	    ?? ( $(python_gen_useflags 'python2*') )
-	    ?? ( $(python_gen_useflags 'python3*') )
-	)
+    luajit? ( lua )
+    python? (
+	   || ( $(python_gen_useflags '*') )
+	   ?? ( $(python_gen_useflags 'python2*') )
+	   ?? ( $(python_gen_useflags 'python3*') )
+    )
 "
 
 RDEPEND="
-	>=app-eselect/eselect-vi-1.1
-	>=sys-libs/ncurses-5.2-r2:0=
-	nls? ( virtual/libintl )
-	acl? ( kernel_linux? ( sys-apps/acl ) )
-	cscope? ( dev-util/cscope )
-	gpm? ( >=sys-libs/gpm-1.19.3 )
-	lua? (
-	    luajit? ( dev-lang/luajit:2= )
+    >=app-eselect/eselect-vi-1.1
+    >=sys-libs/ncurses-5.2-r2:0=
+    nls? ( virtual/libintl )
+    acl? ( kernel_linux? ( sys-apps/acl ) )
+    cscope? ( dev-util/cscope )
+    gpm? ( >=sys-libs/gpm-1.19.3 )
+    lua? (
+	   luajit? ( dev-lang/luajit:2= )
 	    !luajit? ( dev-lang/lua:0[deprecated] )
 	)
 	!minimal? (
@@ -134,7 +134,7 @@ src_prepare() {
 	    cp "${S}"/src/config.mk.dist "${S}"/src/auto/config.mk
     fi
 
-    # Bug #378107 - Build properly with >=perl-core/ExtUtils-ParseXS-3.20.0
+    # Bug #378.17 - Build properly with >=perl-core/ExtUtils-ParseXS-3.20.0
     if version_is_at_least 7.3 ; then
 	    sed -i "s:\\\$(PERLLIB)/ExtUtils/xsubpp:${EPREFIX}/usr/bin/xsubpp:"	\
 		   "${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
@@ -353,4 +353,5 @@ pkg_postrm() {
 	# Make convenience symlinks
 	update_vim_symlinks
 }
+
 
