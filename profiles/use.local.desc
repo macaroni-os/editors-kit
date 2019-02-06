@@ -50,6 +50,7 @@ app-editors/neovim:clipboard - Enable clipboard support through a provider
 app-editors/neovim:nvimpager - Install nvimpager symlink to less.sh macro
 app-editors/neovim:remote - Enable support for remote options using nvr
 app-editors/neovim:tui - Build the neovim unix tui
+app-editors/okteta:designer - Build plugins for dev-qt/designer
 app-editors/qhexedit2:gui - Install Qt5 hex editor
 app-editors/tea:aspell - Enable spellchecking using app-text/aspell
 app-editors/tea:hunspell - Enable spellchecking using app-text/hunspell
