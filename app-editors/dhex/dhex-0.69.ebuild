@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.63-Makefile.patch
+	epatch "${FILESDIR}"/${PN}-0.69-Makefile.patch
 }
 
 src_compile() {
