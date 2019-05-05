@@ -3,15 +3,16 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 
 DISTUTILS_OPTIONAL=1
+DISTUTILS_SINGLE_IMPL=1
 
 inherit distutils-r1 qmake-utils
 
 DESCRIPTION="Hex editor library, Qt application written in C++ with Python bindings"
 HOMEPAGE="https://github.com/lancos/qhexedit2/"
-SRC_URI="https://github.com/lancos/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Simsys/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -20,17 +21,18 @@ IUSE="doc +gui python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
-	"${FILESDIR}/${P}-fixtest.patch"
-	"${FILESDIR}/${P}-setup.py.patch"
+	"${FILESDIR}/${PN}-0.8.4-setup.py.patch"
 )
 
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
-	python? ( dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
-			dev-python/sip[${PYTHON_USEDEP}]
-			${PYTHON_DEPS} )
+	python? (
+                dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
+                dev-python/sip[${PYTHON_USEDEP}]
+                ${PYTHON_DEPS}
+            )
 "
 DEPEND="${RDEPEND}"
 
@@ -53,10 +55,7 @@ src_configure() {
 src_compile() {
 	default
 	use python && distutils-r1_src_compile
-	if use gui; then
-		cd example || die "can't cd example"
-		emake
-	fi
+    use gui && emake -C example
 }
 
 python_compile() {
@@ -74,6 +73,7 @@ src_test() {
 
 src_install() {
 	emake INSTALL_ROOT="${D}" install
+    doheader src/*.h
 	use python && distutils-r1_src_install
 	use gui && dobin example/qhexedit
 	if use doc; then
