@@ -2,7 +2,6 @@
 # your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using egencache *
 
-app-editors/bluefish:gtk2 - Enable GTK2 instead of GTK3 even if GTK3 is available
 app-editors/bluefish:gtk3 - Enable GTK3 interface (default)
 app-editors/bluefish:gucharmap - Enable gucharmap dictionary plugin
 app-editors/bluefish:python - Enable Python integration for zen-coding plugin
@@ -62,6 +61,7 @@ app-editors/vis:tre - more memory efficient regex search using dev-libs/tre
 app-editors/xemacs:athena - Chooses the MIT Athena widget set
 app-editors/xemacs:dnd - Enables support for the x11-libs/dnd drag-n-drop library
 app-editors/xemacs:eolconv - Support detection and translation of newline conventions
+app-editors/xemacs:mule - Add multi-language support to XEmacs
 app-editors/xemacs:pop - Support POP for mail retrieval
 app-editors/xemacs:xim - Enable X11 XiM input method
 app-editors/zile:valgrind - Enable usage of dev-util/valgrind in tests
@@ -82,3 +82,4 @@ app-emacs/wanderlust:bbdb - Include support for app-emacs/bbdb
 app-emacs/wikipedia-mode:outline-magic - Enable support for outline-mode extensions (app-emacs/outline-magic)
 app-vim/gentoo-syntax:ignore-glep31 - Remove GLEP 31 (UTF-8 file encodings) settings
 app-vim/youcompleteme:clang - Enable semantic support for C-family languages using sys-devel/clang
+app-xemacs/xemacs-packages-all:mule - Add multi-language support to XEmacs

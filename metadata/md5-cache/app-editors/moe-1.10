@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare unpack
+DEPEND=|| ( app-arch/plzip app-arch/pdlzip app-arch/lzip ) sys-libs/ncurses:0= virtual/pkgconfig
+DESCRIPTION=A powerful and user-friendly console text editor
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/moe/
+KEYWORDS=~amd64 ~arm ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=sys-libs/ncurses:0=
+SLOT=0
+SRC_URI=mirror://gnu/moe/moe-1.10.tar.lz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	unpacker	3cd8bad0d31e525cd26be1bfa4e61631
+_md5_=dc29d46c2c60c29238cf7319fad92bbc
