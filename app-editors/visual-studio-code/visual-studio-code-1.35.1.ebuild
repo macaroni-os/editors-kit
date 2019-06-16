@@ -1,11 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI=6
 
 inherit eutils pax-utils
-
 
 RELEASE="c7d83e57cd18f18026a8162d042843bda1bcf21f"
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
