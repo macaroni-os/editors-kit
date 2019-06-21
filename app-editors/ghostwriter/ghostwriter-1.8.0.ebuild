@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,18 +14,19 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
+BDEPEND="dev-qt/linguist-tools:5"
+
 RDEPEND="
 	app-text/hunspell
+	dev-qt/qtwebchannel:5
+	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtprintsupport:5
-	dev-qt/qtwebkit:5
+	dev-qt/qtsvg:5
+	dev-qt/qtwebengine:5[widgets]
 	dev-qt/qtwidgets:5
 "
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-	dev-qt/qtconcurrent:5
-"
+DEPEND="${RDEPEND}"
 
 DOCS=( CREDITS.md README.md )
 
