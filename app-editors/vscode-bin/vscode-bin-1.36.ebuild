@@ -1,24 +1,19 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI=6
 
 inherit eutils pax-utils
-
-
-RELEASE="c7d83e57cd18f18026a8162d042843bda1bcf21f"
+RELEASE="0f3794b38477eea13fb47fbe15a42798e6129338"
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
-SRC_URI="
-	x86? ( https://az764295.vo.msecnd.net/stable/${RELEASE}/code-stable-1560349812.tar.gz -> ${P}_i386.tar.gz )
-	amd64? ( https://az764295.vo.msecnd.net/stable/${RELEASE}/code-stable-1560350233.tar.gz -> ${P}_amd64.tar.gz )
-	"
+SRC_URI="https://az764295.vo.msecnd.net/stable/${RELEASE}/code-stable-1562161049.tar.gz -> ${P}.tar.gz"
 RESTRICT="mirror strip"
 
 LICENSE="Microsoft"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="
@@ -79,23 +74,20 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 pkg_setup() {
-	if use amd64; then
-		S="${WORKDIR}/VSCode-linux-x64"
-	elif use x86; then
-		S="${WORKDIR}/VSCode-linux-ia32"
-	fi
+	S="${WORKDIR}/VSCode-linux-x64"
 }
 
 src_install(){
 	pax-mark m code
 	insinto "/opt/${PN}"
 	doins -r *
-	dosym "/opt/${PN}/code" "/usr/bin/visual-studio-code"
+	dosym "/opt/${PN}/code" "/usr/bin/vscode"
 	make_wrapper "${PN}" "/opt/${PN}/code"
 	make_desktop_entry "${PN}" "Visual Studio Code" "${PN}" "Development;IDE"
 	doicon ${FILESDIR}/${PN}.png
 	fperms +x "/opt/${PN}/code"
-	fperms +x "/opt/${PN}/libnode.so"
+	fperms +x "/opt/${PN}/libEGL.so"
+	fperms +x "/opt/${PN}/libGLESv2.so"
 	fperms +x "/opt/${PN}/libffmpeg.so"
 
 	#fix Spawn EACESS bug #25848
