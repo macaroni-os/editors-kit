@@ -1,19 +1,18 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit elisp-common flag-o-matic multilib readme.gentoo-r1
+inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
-SRC_URI="mirror://gnu/emacs/${P}.tar.xz
-	https://dev.gentoo.org/~ulm/emacs/${P}-patches-1.tar.xz"
+SRC_URI="mirror://gnu/emacs/${P}.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="26"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk +gtk3 gzip-el imagemagick +inotify jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
+KEYWORDS="*"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk gtk2 gzip-el imagemagick +inotify jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
 REQUIRED_USE="?? ( aqua X )"
 
 RDEPEND="sys-libs/ncurses:0=
@@ -51,8 +50,7 @@ RDEPEND="sys-libs/ncurses:0=
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff:0 )
 		xpm? ( x11-libs/libXpm )
-		imagemagick? ( >=media-gfx/imagemagick-6.6.2:0=
-			<media-gfx/imagemagick-7:0= )
+		imagemagick? ( >=media-gfx/imagemagick-6.6.2:0= )
 		xft? (
 			media-libs/fontconfig
 			media-libs/freetype
@@ -65,14 +63,13 @@ RDEPEND="sys-libs/ncurses:0=
 			)
 		)
 		gtk? (
-			xwidgets? (
-				net-libs/webkit-gtk:4=
+			gtk2? ( x11-libs/gtk+:2 )
+			!gtk2? (
 				x11-libs/gtk+:3
-				x11-libs/libXcomposite
-			)
-			!xwidgets? (
-				gtk3? ( x11-libs/gtk+:3 )
-				!gtk3? ( x11-libs/gtk+:2 )
+				xwidgets? (
+					net-libs/webkit-gtk:4=
+					x11-libs/libXcomposite
+				)
 			)
 		)
 		!gtk? (
@@ -102,7 +99,6 @@ DEPEND="${RDEPEND}
 
 BDEPEND="virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )"
-#	pax_kernel? ( sys-apps/attr )
 
 RDEPEND="${RDEPEND}
 	!<app-editors/emacs-vcs-${PV}"
@@ -116,12 +112,11 @@ FULL_VERSION="${PV%%_*}"
 S="${WORKDIR}/emacs-${FULL_VERSION}"
 
 src_prepare() {
-	eapply ../patch
+	#eapply ../patch
 	eapply_user
 
 	# Fix filename reference in redirected man page
-	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 \
-		|| die "unable to sed ctags.1"
+	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
 
 	#AT_M4DIR=m4 eautoreconf
 }
@@ -137,9 +132,6 @@ src_configure() {
 	else
 		replace-flags "-O[3-9]" -O2
 	fi
-
-	# Don't trigger a floating point exception for NaNs on alpha
-	use alpha && append-flags -mieee
 
 	local myconf
 
@@ -191,11 +183,12 @@ src_configure() {
 				recommended that you compile Emacs with the Athena/Lucid or the
 				Motif toolkit instead.
 			EOF
-			if use xwidgets; then
-				myconf+=" --with-x-toolkit=gtk3 --with-xwidgets"
+			if use gtk2; then
+				myconf+=" --with-x-toolkit=gtk2 --without-xwidgets"
+				use xwidgets && ewarn \
+					"USE flag \"xwidgets\" has no effect if \"gtk2\" is set."
 			else
-				myconf+=" --with-x-toolkit=$(usex gtk3 gtk3 gtk2)"
-				myconf+=" --without-xwidgets"
+				myconf+=" --with-x-toolkit=gtk3 $(use_with xwidgets)"
 			fi
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
@@ -215,8 +208,12 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf+=" --with-x-toolkit=no"
 		fi
-		! use gtk && use xwidgets && ewarn \
-			"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
+		if ! use gtk; then
+			use gtk2 && ewarn \
+				"USE flag \"gtk2\" has no effect if \"gtk\" is not set."
+			use xwidgets && ewarn \
+				"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
+		fi
 	elif use aqua; then
 		einfo "Configuring to build with Nextstep (Cocoa) support"
 		myconf+=" --with-ns --disable-ns-self-contained"
@@ -227,6 +224,7 @@ src_configure() {
 
 	econf \
 		--program-suffix="-${EMACS_SUFFIX}" \
+		--includedir="${EPREFIX}"/usr/include/${EMACS_SUFFIX} \
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
 		--localstatedir="${EPREFIX}"/var \
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
@@ -260,14 +258,12 @@ src_compile() {
 src_install () {
 	emake DESTDIR="${D}" NO_BIN_LINK=t install
 
-	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} \
-		|| die "moving emacs executable failed"
-	mv "${ED}"/usr/share/man/man1/{emacs-,}${EMACS_SUFFIX}.1 \
-		|| die "moving emacs man page failed"
+	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} || die
+	mv "${ED}"/usr/share/man/man1/{emacs-,}${EMACS_SUFFIX}.1 || die
+	mv "${ED}"/usr/share/metainfo/{emacs-,}${EMACS_SUFFIX}.appdata.xml || die
 
 	# move info dir to avoid collisions with the dir file generated by portage
-	mv "${ED}"/usr/share/info/${EMACS_SUFFIX}/dir{,.orig} \
-		|| die "moving info dir failed"
+	mv "${ED}"/usr/share/info/${EMACS_SUFFIX}/dir{,.orig} || die
 	touch "${ED}"/usr/share/info/${EMACS_SUFFIX}/.keepinfodir
 	docompress -x /usr/share/info/${EMACS_SUFFIX}/dir.orig
 
@@ -282,6 +278,15 @@ src_install () {
 
 	# remove COPYING file (except for etc/COPYING used by describe-copying)
 	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING
+
+	if use systemd; then
+		insinto /usr/lib/systemd/user
+		sed -e "/^##/d" \
+			-e "/^ExecStart/s,emacs,${EPREFIX}/usr/bin/${EMACS_SUFFIX}," \
+			-e "/^ExecStop/s,emacsclient,${EPREFIX}/usr/bin/&-${EMACS_SUFFIX}," \
+			etc/emacs.service | newins - ${EMACS_SUFFIX}.service
+		assert
+	fi
 
 	if use gzip-el; then
 		# compress .el files when a corresponding .elc exists
@@ -352,15 +357,14 @@ pkg_preinst() {
 	# move Info dir file to correct name
 	local infodir=/usr/share/info/${EMACS_SUFFIX} f
 	if [[ -f ${ED}${infodir}/dir.orig ]]; then
-		mv "${ED}"${infodir}/dir{.orig,} || die "moving info dir failed"
+		mv "${ED}"${infodir}/dir{.orig,} || die
 	elif [[ -d "${ED}"${infodir} ]]; then
 		# this should not happen in EAPI 4
 		ewarn "Regenerating Info directory index in ${infodir} ..."
 		rm -f "${ED}"${infodir}/dir{,.*}
 		for f in "${ED}"${infodir}/*; do
 			if [[ ${f##*/} != *-[0-9]* && -e ${f} ]]; then
-				install-info --info-dir="${ED}"${infodir} "${f}" \
-					|| die "install-info failed"
+				install-info --info-dir="${ED}"${infodir} "${f}" || die
 			fi
 		done
 	fi
