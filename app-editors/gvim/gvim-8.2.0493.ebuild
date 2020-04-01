@@ -1,7 +1,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-VIM_VERSION="8.0"
+VIM_VERSION="8.1"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE=threads
 inherit eutils vim-doc flag-o-matic fdo-mime gnome2-utils versionator bash-completion-r1 prefix python-r1
@@ -82,12 +82,6 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/vim-${PV}
 
-PATCHES=( "$FILESDIR/001_all_vim-6.3-xorg-75816.patch"
-"$FILESDIR/002_all_vim-7.3-apache-83565.patch"
-"$FILESDIR/004_all_vim-7.0-grub-splash-96155.patch"
-"$FILESDIR/005_all_vim_7.1-ada-default-compiler.patch"
-"$FILESDIR/006-vim-8.0-crosscompile.patch" )
-
 pkg_setup() {
 	# people with broken alphabets run into trouble. bug 82186.
 	unset LANG LC_ALL
@@ -99,11 +93,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-    epatch "${FILESDIR}/001_all_vim-6.3-xorg-75816.patch"
-    epatch "${FILESDIR}/002_all_vim-7.3-apache-83565.patch"
-    epatch "${FILESDIR}/004_all_vim-7.0-grub-splash-96155.patch"
-    epatch "${FILESDIR}/005_all_vim_7.1-ada-default-compiler.patch"
-    epatch "${FILESDIR}/006-vim-8.0-crosscompile.patch"    
+	epatch "${FILESDIR}/002_all_vim-7.3-apache-83565.patch"
+	epatch "${FILESDIR}/004_all_vim-7.0-grub-splash-96155.patch"
+	epatch "${FILESDIR}/005_all_vim_7.1-ada-default-compiler.patch"
+	epatch "${FILESDIR}/006-vim-8.0-crosscompile.patch"
 
 	# Fixup a script to use awk instead of nawk
 	sed -i '1s|.*|#!'"${EPREFIX}"'/usr/bin/awk -f|' "${S}"/runtime/tools/mve.awk \
@@ -144,7 +137,7 @@ src_prepare() {
 		cp "${S}"/src/config.mk.dist "${S}"/src/auto/config.mk
 	fi
 
-	# Bug #378107 - Build properly with >=perl-core/ExtUtils-ParseXS-3.20.0
+	# Bug #378.17 - Build properly with >=perl-core/ExtUtils-ParseXS-3.20.0
 	if version_is_at_least 7.3 ; then
 		sed -i "s:\\\$(PERLLIB)/ExtUtils/xsubpp:${EPREFIX}/usr/bin/xsubpp:"	\
 			"${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
