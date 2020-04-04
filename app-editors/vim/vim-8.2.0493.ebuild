@@ -2,7 +2,7 @@
 
 EAPI=6
 VIM_VERSION="8.1"
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7,3_8} )
+PYTHON_COMPAT=(  )
 inherit eutils vim-doc flag-o-matic fdo-mime versionator bash-completion-r1 python-r1
 
 SRC_URI="https://github.com/vim/vim/archive/v8.2.0493/v8.2.0493.tar.gz -> vim-8.2.0493.tar.gz"
