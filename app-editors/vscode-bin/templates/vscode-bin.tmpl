@@ -1,6 +1,4 @@
-# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=7
 
@@ -36,7 +34,7 @@ RDEPEND="
 "
 
 pkg_setup() {
-	S="${WORKDIR}/VSCode-linux-x64"
+	S="${WORKDIR}/{{ src_path_name }}"
 }
 
 src_install() {
@@ -49,25 +47,20 @@ src_install() {
 	newicon ${S}/resources/app/resources/linux/code.png ${PN}.png
 
 	fperms +x "${MY_INSTALL_DIR}/${MY_EXEC}"
-        fperms 4755 "${MY_INSTALL_DIR}/chrome-sandbox"
-        fperms +x "${MY_INSTALL_DIR}/libEGL.so"
-        fperms +x "${MY_INSTALL_DIR}/libGLESv2.so"
-        fperms +x "${MY_INSTALL_DIR}/libffmpeg.so"
-
-	#fix Spawn EACESS bug #25848
-	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg"
+	fperms 4755 "${MY_INSTALL_DIR}/chrome-sandbox"
+	{% for sh_path in fperms_paths -%}
+	fperms +x "${MY_INSTALL_DIR}/{{ sh_path }}"
+	{% endfor -%}
 	insinto "/usr/share/licenses/${PN}"
 	newins "resources/app/LICENSE.rtf" "LICENSE.rtf"
 }
 
 pkg_postinst() {
 	xdg_desktop_database_update
-	xdg_desktop_database_update
 	elog "You may install some additional utils, so check them in:"
 	elog "https://code.visualstudio.com/Docs/setup#_additional-tools"
 }
 
 pkg_postrm() {
-	xdg_desktop_database_update
 	xdg_desktop_database_update
 }
