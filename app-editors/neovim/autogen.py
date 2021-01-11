@@ -31,9 +31,9 @@ def generate_ebuild(hub, repo_name, release_data, is_stable, **pkginfo):
 
 async def generate(hub, **pkginfo):
 	name = pkginfo["name"]
-	release_data = await hub.pkgtools.fetch.get_page(
-		f"https://api.github.com/repos/{name}/{name}/releases", is_json=True
-	)
+	release_data = await hub.pkgtools.fetch.get_page(f"https://api.github.com/repos/{name}/{name}/releases", is_json=True)
 
 	generate_ebuild(hub, name, release_data, True, **pkginfo)
-	generate_ebuild(hub, name, release_data, False, **pkginfo)
+	# FL-7926 - previous (NVIM NVIM 0.5.095053284) unstable version has been
+	# removed from github
+	# generate_ebuild(hub, name, release_data, False, **pkginfo)

@@ -1,6 +1,4 @@
-# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=7
 
@@ -10,11 +8,11 @@ MY_INSTALL_DIR="/opt/${PN}"
 MY_EXEC="codium"
 DESCRIPTION="Community-driven, freely-licensed binary distribution of Microsoft’s editor VSCode"
 HOMEPAGE="https://vscodium.com/"
-SRC_URI="https://github.com/VSCodium/vscodium/releases/download/${PV}/VSCodium-linux-x64-${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="{{artifacts[0].src_uri}}"
 RESTRICT="mirror strip"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="*"
+KEYWORDS="amd64"
 IUSE="libsecret hunspell"
 
 DEPEND="
