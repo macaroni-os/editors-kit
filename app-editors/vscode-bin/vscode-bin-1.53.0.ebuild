@@ -60,6 +60,7 @@ src_install() {
 	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/ms-vscode.node-debug2/out/src/terminateProcess.sh"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/ms-vscode.node-debug2/src/terminateProcess.sh"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/keytar/build/Release/keytar.node"
+	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/keytar/build/Release/obj.target/keytar.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/native-keymap/build/Release/keymapping.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/native-watchdog/build/Release/watchdog.node"
