@@ -88,7 +88,7 @@ EGO_SUM=(
 
 go-module_set_globals
 
-SRC_URI="https://github.com/zyedidia/micro/archive/v2.0.8.tar.gz
+SRC_URI="https://github.com/zyedidia/micro/archive/v2.0.8.tar.gz -> micro-v2.0.8.tar.gz
 	${EGO_SUM_SRC_URI}"
 
 DESCRIPTION="A modern and intuitive terminal-based text editor"
