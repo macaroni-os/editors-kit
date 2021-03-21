@@ -8,6 +8,6 @@ IUSE=+lto +luajit +nvimpager +tui
 LICENSE=Apache-2.0 vim
 RDEPEND=dev-libs/libuv:0= dev-libs/libvterm:0= dev-libs/msgpack:0= dev-lua/lpeg[luajit=] dev-lua/luv[luajit=] dev-lua/mpack[luajit=] net-libs/libnsl dev-libs/tree-sitter luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:= dev-lua/LuaBitOp ) tui? ( dev-libs/libtermkey >=dev-libs/unibilium-2.0.0:0= ) app-eselect/eselect-vi
 SLOT=0
-SRC_URI=https://github.com/neovim/neovim/archive/nightly.tar.gz -> neovim-0.5.01161400.tar.gz
+SRC_URI=https://github.com/neovim/neovim/archive/nightly.tar.gz -> neovim-0.5.0116555974.tar.gz
 _eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=c7b66fa8c781133ce5ce89a1b9302757
+_md5_=b82f4fb8278ce6a50d7a742d17ed4d18
