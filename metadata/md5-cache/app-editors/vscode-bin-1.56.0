@@ -4,11 +4,10 @@ DESCRIPTION=Multiplatform Visual Studio Code from Microsoft
 EAPI=7
 HOMEPAGE=https://code.visualstudio.com
 IUSE=libsecret hunspell
-KEYWORDS=*
 LICENSE=Microsoft
 RDEPEND=media-libs/libpng >=x11-libs/gtk+-3.0 x11-libs/cairo x11-libs/libXtst >=net-print/cups-2.0.0 x11-libs/libnotify x11-libs/libXScrnSaver dev-libs/nss hunspell? ( app-text/hunspell ) libsecret? ( app-crypt/libsecret[crypt] )
 RESTRICT=mirror strip
 SLOT=0
-SRC_URI=https://az764295.vo.msecnd.net/stable/3c4e3df9e89829dce27b7b5c24508306b151f30d/code-stable-x64-1618307634.tar.gz -> vscode-bin-1.55.2.tar.gz
+SRC_URI=https://az764295.vo.msecnd.net/insider/23a2409675bc1bde94f3532bc7c5826a6e99e4b6/code-insider-x64-1618983085.tar.gz -> vscode-bin-1.56.0.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	pax-utils	db85a3c508cf82c45f24b2723791cc93	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=8fd7075aab2c88c42fe50e14df8531f1
+_md5_=ad6ba98455b42c00852e5f7e001bf713
