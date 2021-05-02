@@ -9,19 +9,19 @@ HOMEPAGE="https://www.gnu.org/software/emacs/"
 SRC_URI="mirror://gnu/emacs/${P}.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-SLOT="26"
+SLOT="27"
 KEYWORDS="*"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading +ebuild-mode games gconf gfile gif gpm gsettings gtk gtk2 +gzip-el imagemagick +inotify jpeg kerberos lcms +libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
-REQUIRED_USE="?? ( aqua X )"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif +gmp gpm gsettings gtk gui gzip-el harfbuzz imagemagick +inotify jpeg json kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm xwidgets zlib"
 
-RDEPEND="sys-libs/ncurses:0=
-	>=app-eselect/eselect-emacs-1.16
-	>=app-emacs/emacs-common-gentoo-1.5[games?,X?]
+RDEPEND="app-emacs/emacs-common[games?,gui(-)?]
+	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
+	gmp? ( dev-libs/gmp:0= )
 	gpm? ( sys-libs/gpm )
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
+	json? ( dev-libs/jansson )
 	kerberos? ( virtual/krb5 )
 	lcms? ( media-libs/lcms:2 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
@@ -31,7 +31,7 @@ RDEPEND="sys-libs/ncurses:0=
 	ssl? ( net-libs/gnutls:0= )
 	systemd? ( sys-apps/systemd )
 	zlib? ( sys-libs/zlib )
-	X? (
+	gui? ( !aqua? (
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libX11
@@ -49,26 +49,24 @@ RDEPEND="sys-libs/ncurses:0=
 		svg? ( >=gnome-base/librsvg-2.0 )
 		tiff? ( media-libs/tiff:0 )
 		xpm? ( x11-libs/libXpm )
-		imagemagick? ( >=media-gfx/imagemagick-6.6.2:0= <media-gfx/imagemagick-7:0= )
+		imagemagick? ( >=media-gfx/imagemagick-6.6.2:0= )
 		xft? (
 			media-libs/fontconfig
 			media-libs/freetype
 			x11-libs/libXft
 			x11-libs/libXrender
 			cairo? ( >=x11-libs/cairo-1.12.18 )
+			harfbuzz? ( media-libs/harfbuzz:0= )
 			m17n-lib? (
 				>=dev-libs/libotf-0.9.4
 				>=dev-libs/m17n-lib-1.5.1
 			)
 		)
 		gtk? (
-			gtk2? ( x11-libs/gtk+:2 )
-			!gtk2? (
-				x11-libs/gtk+:3
-				xwidgets? (
-					net-libs/webkit-gtk:4=
-					x11-libs/libXcomposite
-				)
+			x11-libs/gtk+:3
+			xwidgets? (
+				net-libs/webkit-gtk:4=
+				x11-libs/libXcomposite
 			)
 		)
 		!gtk? (
@@ -91,18 +89,18 @@ RDEPEND="sys-libs/ncurses:0=
 				) )
 			)
 		)
-	)"
+	) )"
 
 DEPEND="${RDEPEND}
-	X? ( x11-base/xorg-proto )"
+	gui? ( !aqua? ( x11-base/xorg-proto ) )"
 
-BDEPEND="virtual/pkgconfig
+BDEPEND="app-eselect/eselect-emacs
+	sys-apps/texinfo
+	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )"
 
 RDEPEND="${RDEPEND}
-	!<app-editors/emacs-vcs-${PV}"
-
-PDEPEND="ebuild-mode? ( app-emacs/ebuild-mode )"
+	app-eselect/eselect-emacs"
 
 EMACS_SUFFIX="${PN/emacs/emacs-${SLOT}}"
 SITEFILE="20${PN}-${SLOT}-gentoo.el"
@@ -126,9 +124,7 @@ src_configure() {
 	strip-flags
 	filter-flags -pie					#526948
 
-	if use sh; then
-		replace-flags "-O[1-9]" -O0		#262359
-	elif use ia64; then
+	if use ia64; then
 		replace-flags "-O[2-9]" -O1		#325373
 	else
 		replace-flags "-O[3-9]" -O2
@@ -144,7 +140,14 @@ src_configure() {
 		myconf+=" --with-sound=$(usex sound oss)"
 	fi
 
-	if use X; then
+	if ! use gui; then
+		einfo "Configuring to build without window system support"
+		myconf+=" --without-x --without-ns"
+	elif use aqua; then
+		einfo "Configuring to build with Nextstep (Macintosh Cocoa) support"
+		myconf+=" --with-ns --disable-ns-self-contained"
+		myconf+=" --without-x"
+	else
 		myconf+=" --with-x --without-ns"
 		myconf+=" $(use_with gconf)"
 		myconf+=" $(use_with gsettings)"
@@ -160,6 +163,7 @@ src_configure() {
 		if use xft; then
 			myconf+=" --with-xft"
 			myconf+=" $(use_with cairo)"
+			myconf+=" $(use_with harfbuzz)"
 			myconf+=" $(use_with m17n-lib libotf)"
 			myconf+=" $(use_with m17n-lib m17n-flt)"
 		else
@@ -176,21 +180,16 @@ src_configure() {
 		if use gtk; then
 			einfo "Configuring to build with GIMP Toolkit (GTK+)"
 			while read line; do ewarn "${line}"; done <<-EOF
-				Your version of Gtk+ will have problems with closing open
-				displays.  This is no problem if you just use one display, but
+				Your version of GTK+ will have problems with closing open
+				displays. This is no problem if you just use one display, but
 				if you use more than one and close one of them Emacs may crash.
-				See <https://gitlab.gnome.org/GNOME/gtk/issues/221>.
+				See <https://gitlab.gnome.org/GNOME/gtk/-/issues/221> and
+				<https://gitlab.gnome.org/GNOME/gtk/-/issues/2315>.
 				If you intend to use more than one display, then it is strongly
 				recommended that you compile Emacs with the Athena/Lucid or the
 				Motif toolkit instead.
 			EOF
-			if use gtk2; then
-				myconf+=" --with-x-toolkit=gtk2 --without-xwidgets"
-				use xwidgets && ewarn \
-					"USE flag \"xwidgets\" has no effect if \"gtk2\" is set."
-			else
-				myconf+=" --with-x-toolkit=gtk3 $(use_with xwidgets)"
-			fi
+			myconf+=" --with-x-toolkit=gtk3 $(use_with xwidgets)"
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
 					"USE flag \"${f}\" has no effect if \"gtk\" is set."
@@ -209,18 +208,19 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf+=" --with-x-toolkit=no"
 		fi
-		if ! use gtk; then
-			use gtk2 && ewarn \
-				"USE flag \"gtk2\" has no effect if \"gtk\" is not set."
-			use xwidgets && ewarn \
-				"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
-		fi
-	elif use aqua; then
-		einfo "Configuring to build with Nextstep (Cocoa) support"
-		myconf+=" --with-ns --disable-ns-self-contained"
-		myconf+=" --without-x"
+		! use gtk && use xwidgets && ewarn \
+			"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
+	fi
+
+	if tc-is-cross-compiler; then
+		# Configure a CBUILD directory when cross-compiling to make tools
+		mkdir "${S}-build" && pushd "${S}-build" >/dev/null || die
+		ECONF_SOURCE="${S}" econf_build --without-all --without-x-toolkit
+		popd >/dev/null || die
+		# Don't try to execute the binary for dumping during the build
+		myconf+=" --with-dumping=none"
 	else
-		myconf+=" --without-x --without-ns"
+		myconf+=" --with-dumping=pdumper"
 	fi
 
 	econf \
@@ -233,11 +233,14 @@ src_configure() {
 		--without-hesiod \
 		--without-pop \
 		--with-file-notification=$(usev inotify || usev gfile || echo no) \
+		--with-pdumper \
 		$(use_enable acl) \
 		$(use_with dbus) \
 		$(use_with dynamic-loading modules) \
 		$(use_with games gameuser ":gamestat") \
+		$(use_with gmp libgmp) \
 		$(use_with gpm) \
+		$(use_with json) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with lcms lcms2) \
 		$(use_with libxml2 xml2) \
@@ -343,7 +346,7 @@ src_install () {
 		\\n\\nIf you upgrade from Emacs version 24.2 or earlier, then it is
 		strongly recommended that you use app-admin/emacs-updater to rebuild
 		all byte-compiled elisp files of the installed Emacs packages."
-	use X && DOC_CONTENTS+="\\n\\nYou need to install some fonts for Emacs.
+	use gui && DOC_CONTENTS+="\\n\\nYou need to install some fonts for Emacs.
 		Installing media-fonts/font-adobe-{75,100}dpi on the X server's
 		machine would satisfy basic Emacs requirements under X11.
 		See also https://wiki.gentoo.org/wiki/Xft_support_for_GNU_Emacs

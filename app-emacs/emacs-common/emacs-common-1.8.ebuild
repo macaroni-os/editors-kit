@@ -1,9 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit elisp-common desktop xdg-utils gnome2-utils readme.gentoo-r1 user
+inherit elisp-common desktop xdg-utils readme.gentoo-r1 user
 
 DESCRIPTION="Common files needed by all GNU Emacs versions"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
@@ -11,10 +10,10 @@ SRC_URI="https://dev.gentoo.org/~ulm/emacs/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="games X"
+KEYWORDS="*"
+IUSE="games gui"
 
-PDEPEND="virtual/emacs"
+PDEPEND="app-editors/emacs"
 
 pkg_setup() {
 	use games && enewgroup gamestat 36
@@ -22,7 +21,8 @@ pkg_setup() {
 
 src_install() {
 	insinto "${SITELISP}"
-	doins subdirs.el
+	sed -e "s:@libdir@:$(get_libdir):g" subdirs.el.in | newins - subdirs.el
+	assert
 	newins site-gentoo.el{,.orig}
 
 	keepdir /etc/emacs
@@ -35,9 +35,9 @@ src_install() {
 		fperms g+w /var/games/emacs
 	fi
 
-	if use X; then
+	if use gui; then
 		local i
-		domenu emacs.desktop emacsclient.desktop || die
+		domenu emacs.desktop emacsclient.desktop
 
 		pushd icons || die
 		newicon sink.png emacs-sink.png
@@ -50,8 +50,6 @@ src_install() {
 		doicon -s scalable emacs23.svg
 		newicon -s scalable emacs25.svg emacs.svg
 		popd
-
-		gnome2_icon_savelist
 	fi
 
 	DOC_CONTENTS="All site initialisation for Gentoo-installed packages is
@@ -91,16 +89,16 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if use X; then
+	if use gui; then
 		xdg_desktop_database_update
-		gnome2_icon_cache_update
+		xdg_icon_cache_update
 	fi
 	readme.gentoo_print_elog
 }
 
 pkg_postrm() {
-	if use X; then
+	if use gui; then
 		xdg_desktop_database_update
-		gnome2_icon_cache_update
+		xdg_icon_cache_update
 	fi
 }
