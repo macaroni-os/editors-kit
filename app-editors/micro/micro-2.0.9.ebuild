@@ -34,6 +34,8 @@ EGO_SUM=(
 	"github.com/p-e-w/go-runewidth v0.0.10-0.20200613030200-3e1705c5c059/go.mod"
 	"github.com/pmezard/go-difflib v1.0.0"
 	"github.com/pmezard/go-difflib v1.0.0/go.mod"
+	"github.com/rivo/uniseg v0.1.0"
+	"github.com/rivo/uniseg v0.1.0/go.mod"
 	"github.com/robertkrimen/otto v0.0.0-20191219234010-c382bd3c16ff"
 	"github.com/robertkrimen/otto v0.0.0-20191219234010-c382bd3c16ff/go.mod"
 	"github.com/sergi/go-diff v1.1.0"
@@ -51,6 +53,8 @@ EGO_SUM=(
 	"github.com/zyedidia/clipboard v1.0.3/go.mod"
 	"github.com/zyedidia/glob v0.0.0-20170209203856-dd4023a66dc3"
 	"github.com/zyedidia/glob v0.0.0-20170209203856-dd4023a66dc3/go.mod"
+	"github.com/zyedidia/go-runewidth v0.0.12"
+	"github.com/zyedidia/go-runewidth v0.0.12/go.mod"
 	"github.com/zyedidia/go-shellquote v0.0.0-20200613203517-eccd813c0655"
 	"github.com/zyedidia/go-shellquote v0.0.0-20200613203517-eccd813c0655/go.mod"
 	"github.com/zyedidia/highlight v0.0.0-20170330143449-201131ce5cf5"
@@ -63,6 +67,8 @@ EGO_SUM=(
 	"github.com/zyedidia/pty v2.0.0+incompatible/go.mod"
 	"github.com/zyedidia/tcell/v2 v2.0.6"
 	"github.com/zyedidia/tcell/v2 v2.0.6/go.mod"
+	"github.com/zyedidia/tcell/v2 v2.0.7"
+	"github.com/zyedidia/tcell/v2 v2.0.7/go.mod"
 	"github.com/zyedidia/terminal v0.0.0-20180726154117-533c623e2415"
 	"github.com/zyedidia/terminal v0.0.0-20180726154117-533c623e2415/go.mod"
 	"golang.org/x/sys v0.0.0-20190204203706-41f3e6584952/go.mod"
@@ -88,7 +94,7 @@ EGO_SUM=(
 
 go-module_set_globals
 
-SRC_URI="https://github.com/zyedidia/micro/archive/v2.0.8.tar.gz -> micro-v2.0.8.tar.gz
+SRC_URI="https://github.com/zyedidia/micro/archive/v2.0.9.tar.gz -> micro-v2.0.9.tar.gz
 	${EGO_SUM_SRC_URI}"
 
 DESCRIPTION="A modern and intuitive terminal-based text editor"
