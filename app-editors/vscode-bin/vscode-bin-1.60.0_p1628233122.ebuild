@@ -10,7 +10,7 @@ MY_PN=${PN/-bin/}
 
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
-SRC_URI="https://az764295.vo.msecnd.net/insider/379476f0e13988d90fab105c5c19e7abc8b1dea8/code-insider-x64-1628113148.tar.gz -> vscode-bin-1.59.0_p1628112802.tar.gz"
+SRC_URI="https://az764295.vo.msecnd.net/insider/49af1cbe00271ac2ea36cfc5f7352fe31a7b0094/code-insider-x64-1628233592.tar.gz -> vscode-bin-1.60.0_p1628233122.tar.gz"
 RESTRICT="mirror strip"
 LICENSE="Microsoft"
 SLOT="0"
@@ -54,9 +54,6 @@ src_install() {
 	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/git/dist/askpass-empty.sh"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/git/dist/askpass.sh"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/ms-vscode.js-debug/src/terminateProcess.sh"
-	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/ms-vscode.node-debug/dist/terminateProcess.sh"
-	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/ms-vscode.node-debug2/out/src/terminateProcess.sh"
-	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/ms-vscode.node-debug2/src/terminateProcess.sh"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/keytar/build/Release/keytar.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/keytar/build/Release/obj.target/keytar.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node"
