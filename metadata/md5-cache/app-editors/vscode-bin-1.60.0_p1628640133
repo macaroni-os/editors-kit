@@ -8,6 +8,6 @@ LICENSE=Microsoft
 RDEPEND=media-libs/libpng >=x11-libs/gtk+-3.0 x11-libs/cairo x11-libs/libXtst >=net-print/cups-2.0.0 x11-libs/libnotify x11-libs/libXScrnSaver dev-libs/nss hunspell? ( app-text/hunspell ) libsecret? ( app-crypt/libsecret[crypt] )
 RESTRICT=mirror strip
 SLOT=0
-SRC_URI=https://az764295.vo.msecnd.net/insider/71b299184f7908491345aec5e231599c3ae8753b/code-insider-x64-1628573824.tar.gz -> vscode-bin-1.60.0_p1628573564.tar.gz
+SRC_URI=https://az764295.vo.msecnd.net/insider/1c445fe4c7c540d323a206f2f7cb8df9aa99d60e/code-insider-x64-1628640417.tar.gz -> vscode-bin-1.60.0_p1628640133.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	pax-utils	db85a3c508cf82c45f24b2723791cc93	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=2624e104549adab5d2ace9579d9dfb0d
+_md5_=7dbd5c50b2ac3481980f2fa49a9b1fd2
