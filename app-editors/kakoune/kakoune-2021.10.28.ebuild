@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Modal editor inspired by vim"
 HOMEPAGE="http://kakoune.org/ https://github.com/mawww/kakoune"
-SRC_URI="https://api.github.com/repos/mawww/kakoune/tarball/v2021.08.28 -> kakoune-2021.08.28.tar.gz"
+SRC_URI="https://api.github.com/repos/mawww/kakoune/tarball/v2021.10.28 -> kakoune-2021.10.28.tar.gz"
 
 LICENSE="Unlicense"
 SLOT="0"
