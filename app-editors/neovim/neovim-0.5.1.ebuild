@@ -6,7 +6,7 @@ inherit cmake xdg
 
 DESCRIPTION="Vim-fork focused on extensibility and agility."
 HOMEPAGE="https://neovim.io"
-SRC_URI="https://github.com/neovim/neovim/archive/v0.5.1.tar.gz -> neovim-0.5.1.tar.gz"
+SRC_URI="https://github.com/neovim/neovim/archive/0159e4daaed1347db8719c27946fcfdc4e49e92d.tar.gz"
 KEYWORDS="*"
 
 LICENSE="Apache-2.0 vim"
