@@ -6,7 +6,7 @@ inherit cmake xdg
 
 DESCRIPTION="Vim-fork focused on extensibility and agility."
 HOMEPAGE="https://neovim.io"
-SRC_URI="https://github.com/neovim/neovim/archive/0159e4daaed1347db8719c27946fcfdc4e49e92d.tar.gz"
+SRC_URI="https://github.com/neovim/neovim/archive/0159e4daaed1347db8719c27946fcfdc4e49e92d.tar.gz -> neovim-0.5.1-0159e4daaed1347db8719c27946fcfdc4e49e92d.tar.gz"
 KEYWORDS="*"
 
 LICENSE="Apache-2.0 vim"
@@ -19,9 +19,10 @@ BDEPEND="
 	virtual/libintl
 	virtual/pkgconfig
 "
+
 DEPEND="
+	<dev-libs/libvterm-0.2
 	dev-libs/libuv:0=
-	dev-libs/libvterm:0=
 	dev-libs/msgpack:0=
 	dev-lua/lpeg[luajit=]
 	dev-lua/luv[luajit=]
@@ -38,6 +39,7 @@ DEPEND="
 		>=dev-libs/unibilium-2.0.0:0=
 	)
 "
+
 RDEPEND="
 	${DEPEND}
 	app-eselect/eselect-vi
