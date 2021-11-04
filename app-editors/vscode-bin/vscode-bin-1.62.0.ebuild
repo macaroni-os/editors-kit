@@ -10,7 +10,7 @@ MY_PN=${PN/-bin/}
 
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
-SRC_URI="https://az764295.vo.msecnd.net/stable/6cba118ac49a1b88332f312a8f67186f7f3c1643/code-stable-x64-1634657157.tar.gz -> vscode-bin-1.61.2.tar.gz"
+SRC_URI="https://az764295.vo.msecnd.net/stable/b3318bc0524af3d74034b8bb8a64df0ccf35549a/code-stable-x64-1635954380.tar.gz -> vscode-bin-1.62.0.tar.gz"
 RESTRICT="mirror strip bindist"
 LICENSE="
 	Apache-2.0
@@ -87,6 +87,7 @@ src_install() {
 	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/git/dist/askpass-empty.sh"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/git/dist/askpass.sh"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/ms-vscode.js-debug/src/terminateProcess.sh"
+	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/@parcel/watcher/build/Release/watcher.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/@vscode/sqlite3/build/Release/sqlite.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/keytar/build/Release/keytar.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/keytar/build/Release/obj.target/keytar.node"
