@@ -8,6 +8,6 @@ IUSE=+lto +luajit +nvimpager +tui
 LICENSE=Apache-2.0 vim
 RDEPEND=<dev-libs/libvterm-0.2 dev-libs/libuv:0= dev-libs/msgpack:0= dev-lua/lpeg[luajit=] dev-lua/luv[luajit=] dev-lua/mpack[luajit=] net-libs/libnsl dev-libs/tree-sitter luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:= dev-lua/LuaBitOp ) tui? ( dev-libs/libtermkey >=dev-libs/unibilium-2.0.0:0= ) app-eselect/eselect-vi
 SLOT=0
-SRC_URI=https://github.com/neovim/neovim/archive/67bb01ae27db3cbba9e2e908c4e6612040f650aa.tar.gz -> neovim-20211220-67bb01ae27db3cbba9e2e908c4e6612040f650aa.tar.gz
+SRC_URI=https://github.com/neovim/neovim/archive/1062ea2cc532b32862346a1972073f1a8dd6d19d.tar.gz -> neovim-20211221-1062ea2cc532b32862346a1972073f1a8dd6d19d.tar.gz
 _eclasses_=cmake	ac7cb516f6a288b6a82bc0649ce49878	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=d0d24478c7b79a0e503c34733122d78c
+_md5_=b1ce68f8f6a68e4300106b729e044069
