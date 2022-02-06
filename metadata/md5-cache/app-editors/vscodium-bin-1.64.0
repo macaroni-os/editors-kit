@@ -11,4 +11,4 @@ RESTRICT=mirror strip
 SLOT=0
 SRC_URI=https://github.com/VSCodium/vscodium/releases/download/1.64.0/VSCodium-linux-x64-1.64.0.tar.gz -> VSCodium-linux-x64-1.64.0.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	pax-utils	db85a3c508cf82c45f24b2723791cc93	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=97fb53e8442299d6586ca2d9abbfb596
+_md5_=13405948dc1c4ef99e833b4b57258a5c
