@@ -10,7 +10,7 @@ MY_PN=${PN/-bin/}
 
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
-SRC_URI="https://az764295.vo.msecnd.net/stable/d6ee99e4c045a6716e5c653d7da8e9ae6f5a8b03/code-stable-x64-1644256096.tar.gz -> vscode-bin-1.64.1.tar.gz"
+SRC_URI="https://az764295.vo.msecnd.net/stable/f80445acd5a3dadef24aa209168452a3d97cc326/code-stable-x64-1644446282.tar.gz -> vscode-bin-1.64.2.tar.gz"
 RESTRICT="mirror strip bindist"
 LICENSE="
 	Apache-2.0
@@ -80,6 +80,7 @@ src_install() {
 
 	fperms +x "${MY_INSTALL_DIR}/${MY_EXEC}"
 	fperms 4755 "${MY_INSTALL_DIR}/chrome-sandbox"
+	fperms 0755 "${MY_INSTALL_DIR}"/chrome_crashpad_handler
 	fperms +x "${MY_INSTALL_DIR}/libEGL.so"
 	fperms +x "${MY_INSTALL_DIR}/libGLESv2.so"
 	fperms +x "${MY_INSTALL_DIR}/libffmpeg.so"
