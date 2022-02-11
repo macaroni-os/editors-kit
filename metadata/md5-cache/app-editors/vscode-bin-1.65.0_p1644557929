@@ -10,4 +10,4 @@ RESTRICT=mirror strip bindist
 SLOT=0
 SRC_URI=https://az764295.vo.msecnd.net/insider/bb221a61d29deabd99ee9431736d04f2175cb596/code-insider-x64-1644558238.tar.gz -> vscode-bin-1.65.0_p1644557929.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	pax-utils	db85a3c508cf82c45f24b2723791cc93	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=5a33c7f7161f223f20444f44835cb6d0
+_md5_=84daf960c6ec2ed29992e247e07023da
