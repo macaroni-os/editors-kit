@@ -10,7 +10,7 @@ MY_PN=${PN/-bin/}
 
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
-SRC_URI="https://az764295.vo.msecnd.net/insider/86200d542474b26aa28034e0fd5789c45c747d8b/code-insider-x64-1645083629.tar.gz -> vscode-bin-1.65.0_p1645083359.tar.gz"
+SRC_URI="https://az764295.vo.msecnd.net/insider/1d618b2df1cf08f0e3ab706353f0a8f6f1424795/code-insider-x64-1645162743.tar.gz -> vscode-bin-1.65.0_p1645162478.tar.gz"
 RESTRICT="mirror strip bindist"
 LICENSE="
 	Apache-2.0
@@ -107,7 +107,6 @@ src_install() {
 	fperms +x "${MY_INSTALL_DIR}/resources/app/out/vs/base/node/ps.sh"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/out/vs/base/node/terminateProcess.sh"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/out/vs/workbench/contrib/terminal/browser/media/shellIntegration-bash.sh"
-	fperms +x "${MY_INSTALL_DIR}/resources/app/out/vs/workbench/contrib/terminal/browser/media/shellIntegration-zsh.sh"
 	fperms +x "${MY_INSTALL_DIR}/swiftshader/libEGL.so"
 	fperms +x "${MY_INSTALL_DIR}/swiftshader/libGLESv2.so"
 	insinto "/usr/share/licenses/${PN}"
