@@ -35,8 +35,8 @@ KEYWORDS=""
 IUSE="libsecret hunspell"
 DEPEND=""
 RDEPEND="
-    hunspell? ( app-text/hunspell )
-    libsecret? ( app-crypt/libsecret[crypt] )
+	hunspell? ( app-text/hunspell )
+	libsecret? ( app-crypt/libsecret[crypt] )
 	app-accessibility/at-spi2-atk
 	dev-libs/nss
 	media-libs/alsa-lib
@@ -80,7 +80,6 @@ src_install() {
 
 	fperms +x "${MY_INSTALL_DIR}/${MY_EXEC}"
 	fperms 4755 "${MY_INSTALL_DIR}/chrome-sandbox"
-	fperms 0755 "${MY_INSTALL_DIR}"/chrome_crashpad_handler
 
 	fperms +x "${MY_INSTALL_DIR}/libEGL.so"
 	fperms +x "${MY_INSTALL_DIR}/libGLESv2.so"
