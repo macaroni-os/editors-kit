@@ -1,26 +1,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
-inherit eutils vim-doc flag-o-matic fdo-mime versionator bash-completion-r1 python-r1
-VIM_VERSION="$(get_version_component_range 1-2)"
-
-SRC_URI="https://github.com/vim/vim/archive/v8.2.4529/v8.2.4529.tar.gz -> vim-8.2.4529.tar.gz"
-KEYWORDS="*"
+EAPI=7
+VIM_VERSION="$(ver_cut 1-2)"
+PYTHON_COMPAT=( python2+ )
+inherit eutils vim-doc flag-o-matic fdo-mime bash-completion-r1 python-single-r1
 
 DESCRIPTION="Vim, an improved vi-style text editor"
 HOMEPAGE="http://www.vim.org/ https://github.com/vim/vim"
+SRC_URI="https://github.com/vim/vim/archive/v8.2.4529/v8.2.4529.tar.gz -> vim-8.2.4529.tar.gz"
 
 SLOT="0"
 LICENSE="vim"
+KEYWORDS="*"
 IUSE="X acl cscope debug gpm lua luajit minimal nls perl python racket ruby selinux tcl vim-pager"
 REQUIRED_USE="
 	luajit? ( lua )
-	python? (
-	|| ( $(python_gen_useflags '*') )
-	?? ( $(python_gen_useflags 'python2*') )
-	?? ( $(python_gen_useflags 'python3*') )
-	)
+	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
 RDEPEND="
@@ -51,6 +46,13 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 "
 
+PATCHES=(
+	"${FILESDIR}/002_all_vim-7.3-apache-83565.patch"
+	"${FILESDIR}/004_all_vim-7.0-grub-splash-96155.patch"
+	"${FILESDIR}/005_all_vim_7.1-ada-default-compiler.patch"
+	"${FILESDIR}/006-vim-8.0-crosscompile.patch"
+)
+
 pkg_setup() {
 	# people with broken alphabets run into trouble. bug 82186.
 	unset LANG LC_ALL
@@ -59,13 +61,12 @@ pkg_setup() {
 	# Gnome sandbox silliness. bug #114475.
 	mkdir -p "${T}"/home
 	export HOME="${T}"/home
+
+	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/002_all_vim-7.3-apache-83565.patch"
-	epatch "${FILESDIR}/004_all_vim-7.0-grub-splash-96155.patch"
-	epatch "${FILESDIR}/005_all_vim_7.1-ada-default-compiler.patch"
-	epatch "${FILESDIR}/006-vim-8.0-crosscompile.patch"
+	default
 
 	# Fixup a script to use awk instead of nawk
 	sed -i '1s|.*|#!'"${EPREFIX}"'/usr/bin/awk -f|' "${S}"/runtime/tools/mve.awk || die "mve.awk sed failed"
@@ -114,15 +115,11 @@ src_prepare() {
 		"${S}"/src/po/Makefile
 	fi
 
-	if version_is_at_least 7.3.122 ; then
-		cp "${S}"/src/config.mk.dist "${S}"/src/auto/config.mk
-	fi
+	cp "${S}"/src/config.mk.dist "${S}"/src/auto/config.mk
 
 	# Bug #378.17 - Build properly with >=perl-core/ExtUtils-ParseXS-3.20.0
-	if version_is_at_least 7.3 ; then
-		sed -i "s:\\\$(PERLLIB)/ExtUtils/xsubpp:${EPREFIX}/usr/bin/xsubpp:"	\
+	sed -i "s:\\\$(PERLLIB)/ExtUtils/xsubpp:${EPREFIX}/usr/bin/xsubpp:"	\
 		"${S}"/src/Makefile || die 'sed for ExtUtils-ParseXS failed'
-	fi
 
 	eapply_user
 }
@@ -193,21 +190,17 @@ src_configure() {
 		)
 
 		if use python ; then
-		py_add_interp() {
 			local v
 			[[ ${EPYTHON} == python3* ]] && v=3
 			myconf+=(
 				--enable-python${v}interp
 				vi_cv_path_python${v}="${PYTHON}"
 			)
-		}
-
-		   python_foreach_impl py_add_interp
 		else
-		myconf+=(
-			--disable-pythoninterp
-			--disable-python3interp
-		)
+			myconf+=(
+				--disable-pythoninterp
+				--disable-python3interp
+			)
 		fi
 
 		# --with-features=huge forces on cscope even if we --disable it. We need
@@ -233,7 +226,7 @@ src_configure() {
 	use prefix && myconf+=( --without-local-dir )
 
 	econf \
-		--with-modified-by=Gentoo-${PVR} \
+		--with-modified-by=Funtoo-${PVR} \
 		"${myconf[@]}"
 }
 
