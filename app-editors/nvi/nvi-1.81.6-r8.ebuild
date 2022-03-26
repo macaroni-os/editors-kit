@@ -1,17 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools db-use flag-o-matic
 
 DESCRIPTION="Vi clone"
 HOMEPAGE="https://sites.google.com/a/bostic.com/keithbostic/vi"
-SRC_URI="http://garage.linux.student.kuleuven.be/~skimo/nvi/devel/${P}.tar.bz2"
+SRC_URI="https://mirror.csclub.uwaterloo.ca/MacPorts/mpdistfiles/nvi/nvi-1.81.6.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ~mips ppc ppc64 sparc x86 ~x64-macos ~amd64-fbsd"
+KEYWORDS="*"
 IUSE="perl tcl unicode"
 
 CDEPEND=">=sys-libs/db-4.2.52_p5:=
@@ -36,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-ac_config_header.patch
 	"${FILESDIR}"/${P}-use_pkgconfig_for_ncurses.patch
 	"${FILESDIR}"/${P}-printf-types.patch
+	"${FILESDIR}"/${P}-ac_config_sys5_pty.patch
 	)
 
 src_prepare() {
