@@ -81,6 +81,10 @@ src_install() {
 	fperms +x "${MY_INSTALL_DIR}/${MY_EXEC}"
 	fperms 4755 "${MY_INSTALL_DIR}/chrome-sandbox"
 
+    if [ -e "${ED}"/"${MY_INSTALL_DIR}"/chrome_crashpad_handler ]; then
+        fperms 4755 "${MY_INSTALL_DIR}"/chrome_crashpad_handler
+    fi
+
 	fperms +x "${MY_INSTALL_DIR}/libEGL.so"
 	fperms +x "${MY_INSTALL_DIR}/libGLESv2.so"
 	fperms +x "${MY_INSTALL_DIR}/libffmpeg.so"
