@@ -6,7 +6,7 @@ inherit eutils vim-doc flag-o-matic bash-completion-r1 prefix
 
 DESCRIPTION="Vim and GVim shared files"
 HOMEPAGE="http://www.vim.org/ https://github.com/vim/vim"
-SRC_URI="https://github.com/vim/vim/archive/v8.2.5014/v8.2.5014.tar.gz -> vim-8.2.5014.tar.gz"
+SRC_URI="https://github.com/vim/vim/archive/v8.2.5016/v8.2.5016.tar.gz -> vim-8.2.5016.tar.gz"
 
 SLOT="0"
 LICENSE="vim"
