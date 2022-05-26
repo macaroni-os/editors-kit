@@ -10,7 +10,7 @@ MY_PN=${PN/-bin/}
 
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
-SRC_URI="https://az764295.vo.msecnd.net/insider/d891b49fc0f8fc5e00591657ca225975952b09ca/code-insider-x64-1653457234.tar.gz -> vscode-bin-1.68.0_p1653456872.tar.gz"
+SRC_URI="https://az764295.vo.msecnd.net/insider/528ee1ae3daabe30c1307cf9dcd6e77eb96094bc/code-insider-x64-1653543586.tar.gz -> vscode-bin-1.68.0_p1653543354.tar.gz"
 RESTRICT="mirror strip bindist"
 LICENSE="
 	Apache-2.0
@@ -91,6 +91,8 @@ src_install() {
 	fperms +x "${MY_INSTALL_DIR}/libvk_swiftshader.so"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/git/dist/askpass-empty.sh"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/git/dist/askpass.sh"
+	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/git/dist/gitEditor/scripts/git-editor-empty.sh"
+	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/git/dist/gitEditor/scripts/git-editor.sh"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/ms-vscode.js-debug/src/terminateProcess.sh"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/@parcel/watcher/build/Release/watcher.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/@vscode/ripgrep/bin/rg"
