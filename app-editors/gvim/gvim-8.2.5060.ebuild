@@ -1,7 +1,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python2+ )
 inherit eutils vim-doc flag-o-matic fdo-mime gnome2-utils versionator bash-completion-r1 prefix python-r1
 VIM_VERSION="$(get_version_component_range 1-2)"
 
@@ -86,11 +86,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/002_all_vim-7.3-apache-83565.patch"
-	epatch "${FILESDIR}/004_all_vim-7.0-grub-splash-96155.patch"
-	epatch "${FILESDIR}/005_all_vim_7.1-ada-default-compiler.patch"
-	epatch "${FILESDIR}/006-vim-8.0-crosscompile.patch"
-
 	# Fixup a script to use awk instead of nawk
 	sed -i '1s|.*|#!'"${EPREFIX}"'/usr/bin/awk -f|' "${S}"/runtime/tools/mve.awk \
 		|| die "mve.awk sed failed"
