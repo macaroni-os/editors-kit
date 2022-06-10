@@ -10,7 +10,7 @@ MY_PN=${PN/-bin/}
 
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
-SRC_URI="https://az764295.vo.msecnd.net/stable/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/code-stable-x64-1652813090.tar.gz -> vscode-bin-1.67.2.tar.gz"
+SRC_URI="https://az764295.vo.msecnd.net/stable/4af164ea3a06f701fe3e89a2bcbb421d2026b68f/code-stable-x64-1654690355.tar.gz -> vscode-bin-1.68.0.tar.gz"
 RESTRICT="mirror strip bindist"
 LICENSE="
 	Apache-2.0
@@ -91,6 +91,7 @@ src_install() {
 	fperms +x "${MY_INSTALL_DIR}/libvk_swiftshader.so"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/git/dist/askpass-empty.sh"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/git/dist/askpass.sh"
+	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/ms-vscode.js-debug/src/25b0f220a897d7433728f6f34169bdbf.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/ms-vscode.js-debug/src/terminateProcess.sh"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/@parcel/watcher/build/Release/watcher.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/@vscode/ripgrep/bin/rg"
@@ -103,6 +104,7 @@ src_install() {
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/node-pty/build/Release/pty.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/spdlog/build/Release/spdlog.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/vscode-encrypt/build/Release/vscode-encrypt-native.node"
+	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/vscode-policy-watcher/build/Release/vscode-policy-watcher.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/vsda/build/Release/vsda.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/windows-foreground-love/build/Release/foreground_love.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/windows-foreground-love/build/Release/obj.target/foreground_love.node"
