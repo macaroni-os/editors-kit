@@ -5,7 +5,7 @@ PYTHON_COMPAT=( python2+ )
 inherit eutils vim-doc flag-o-matic fdo-mime versionator bash-completion-r1 python-r1
 VIM_VERSION="$(get_version_component_range 1-2)"
 
-SRC_URI="https://github.com/vim/vim/archive/v8.2.5085/v8.2.5085.tar.gz -> vim-8.2.5085.tar.gz"
+SRC_URI="https://github.com/vim/vim/archive/v8.2.5141/v8.2.5141.tar.gz -> vim-8.2.5141.tar.gz"
 KEYWORDS="*"
 
 DESCRIPTION="Vim, an improved vi-style text editor"
