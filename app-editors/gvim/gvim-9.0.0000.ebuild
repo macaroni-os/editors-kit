@@ -7,7 +7,7 @@ inherit eutils vim-doc flag-o-matic fdo-mime gnome2-utils bash-completion-r1 pre
 
 DESCRIPTION="GUI version of the Vim text editor"
 HOMEPAGE="http://www.vim.org/ https://github.com/vim/vim"
-SRC_URI="https://github.com/vim/vim/archive/v8.2.5141/v8.2.5141.tar.gz -> vim-8.2.5141.tar.gz"
+SRC_URI="https://github.com/vim/vim/archive/v9.0.0000/v9.0.0000.tar.gz -> vim-9.0.0000.tar.gz"
 
 SLOT="0"
 LICENSE="vim"
