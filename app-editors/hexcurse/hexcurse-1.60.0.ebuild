@@ -1,4 +1,3 @@
-# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +9,7 @@ SRC_URI="https://github.com/LonnyGomes/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="*"
 
 RDEPEND="
 	>=sys-libs/ncurses-5.2:0=
@@ -21,6 +20,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.60.0-Werror.patch
 	"${FILESDIR}"/${PN}-1.60.0-tinfo.patch
+	"${FILESDIR}"/${PN}-1.60.0-gcc10.patch
 )
 
 src_prepare() {
