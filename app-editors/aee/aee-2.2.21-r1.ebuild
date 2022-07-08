@@ -1,7 +1,6 @@
-# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit toolchain-funcs
 
@@ -12,15 +11,17 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
+KEYWORDS="*"
 IUSE="X"
 
 RDEPEND="X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-ae-location.patch
 	"${FILESDIR}"/${PN}-Wformat-security.patch
+	"${FILESDIR}"/${PN}-gcc-10.patch
 )
 DOCS=( Changes README.${PN} ${PN}.i18n.guide ${PN}.msg )
 
@@ -35,6 +36,7 @@ src_prepare() {
 		-e "s/\([\t ]\)cc /\1\\\\\$(CC) /" \
 		-e "/CFLAGS =/s/\" >/ \\\\\$(LDFLAGS)\" >/" \
 		-e "/other_cflag/s/ \${strip_option}//" \
+		-e "s/-lcurses/$($(tc-getPKG_CONFIG) --libs ncurses)/" \
 		create.mk.{aee,xae}
 
 	default
