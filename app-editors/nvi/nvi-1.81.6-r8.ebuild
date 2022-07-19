@@ -6,7 +6,7 @@ inherit autotools db-use flag-o-matic
 
 DESCRIPTION="Vi clone"
 HOMEPAGE="https://sites.google.com/a/bostic.com/keithbostic/vi"
-SRC_URI="https://mirror.csclub.uwaterloo.ca/MacPorts/mpdistfiles/nvi/nvi-1.81.6.tar.bz2"
+SRC_URI="https://mirror.csclub.uwaterloo.ca/MacPorts/mpdistfiles/nvi/nvi-1.81.6.tar.bz2 -> nvi-1.81.6.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"

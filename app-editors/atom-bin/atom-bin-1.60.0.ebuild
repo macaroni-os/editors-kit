@@ -7,7 +7,7 @@ inherit python-any-r1 unpacker xdg-utils
 
 DESCRIPTION="A hackable text editor for the 21st Century"
 HOMEPAGE="https://atom.io/"
-SRC_URI="https://github.com/atom/atom/releases/download/v1.60.0/atom-amd64.deb"
+SRC_URI="https://github.com/atom/atom/releases/download/v1.60.0/atom-amd64.deb -> atom-amd64.deb"
 
 LICENSE="MIT"
 SLOT="0"
