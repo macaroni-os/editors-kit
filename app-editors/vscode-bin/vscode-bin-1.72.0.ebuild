@@ -10,7 +10,7 @@ MY_PN=${PN/-bin/}
 
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
-SRC_URI="https://az764295.vo.msecnd.net/stable/74b1f979648cc44d385a2286793c226e611f59e7/code-stable-x64-1663191492.tar.gz -> vscode-bin-1.71.2.tar.gz"
+SRC_URI="https://az764295.vo.msecnd.net/stable/64bbfbf67ada9953918d72e1df2f4d8e537d340e/code-stable-x64-1664927249.tar.gz -> vscode-bin-1.72.0.tar.gz"
 RESTRICT="strip bindist"
 LICENSE="
 	Apache-2.0
@@ -93,6 +93,8 @@ src_install() {
 	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/git/dist/askpass.sh"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/git/dist/git-editor-empty.sh"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/git/dist/git-editor.sh"
+	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/git/dist/ssh-askpass-empty.sh"
+	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/git/dist/ssh-askpass.sh"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/ms-vscode.js-debug/src/25b0f220a897d7433728f6f34169bdbf.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/extensions/ms-vscode.js-debug/src/terminateProcess.sh"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/@parcel/watcher/build/Release/watcher.node"
