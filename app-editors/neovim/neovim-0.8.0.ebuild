@@ -4,6 +4,7 @@ EAPI=7
 
 inherit cmake xdg
 
+CMAKE_BUILD_TYPE=Release
 DESCRIPTION="Vim-fork focused on extensibility and agility."
 HOMEPAGE="https://neovim.io"
 SRC_URI="https://github.com/neovim/neovim/archive/d367ed9b23d481998d297d812f54b950e5511c24.tar.gz -> neovim-0.8.0-d367ed9b23d481998d297d812f54b950e5511c24.tar.gz"
@@ -21,7 +22,7 @@ BDEPEND="
 "
 
 DEPEND="
-	<dev-libs/libvterm-0.2
+	>=dev-libs/libvterm-0.3
 	dev-libs/libuv:0=
 	dev-libs/msgpack:0=
 	dev-lua/lpeg[luajit=]
@@ -43,6 +44,11 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	app-eselect/eselect-vi
+"
+
+PATCHES="
+	${FILESDIR}/${PN}-cmake-release-type.patch
+	${FILESDIR}/${PN}-cmake_lua_version.patch
 "
 
 src_unpack() {
