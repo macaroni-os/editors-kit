@@ -1,13 +1,13 @@
+BDEPEND=sys-devel/autoconf
 DEFINED_PHASES=compile configure install postinst postrm prepare setup test
-DEPEND=sys-devel/autoconf
+DEPEND=>=sys-libs/ncurses-5.2-r2:0
 DESCRIPTION=Vim and GVim shared files
 EAPI=7
 HOMEPAGE=http://www.vim.org/ https://github.com/vim/vim
 IUSE=nls acl minimal
 KEYWORDS=*
 LICENSE=vim
-PDEPEND=!minimal? ( app-vim/gentoo-syntax )
 SLOT=0
 SRC_URI=https://github.com/vim/vim/archive/v9.0.0814/v9.0.0814.tar.gz -> vim-9.0.0814.tar.gz
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	d410501a125f99ffb560b0c523cd3d1e	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vim-doc	af2c81a1feeb0a99e91bee3e20769edb
-_md5_=4f856a78477c90c46e825b8c20a280ed
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	d410501a125f99ffb560b0c523cd3d1e	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=5e7268f9cfbf66668ee2c42cfcbb8b1b
