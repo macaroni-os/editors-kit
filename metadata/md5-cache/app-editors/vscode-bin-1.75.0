@@ -4,10 +4,11 @@ DESCRIPTION=Multiplatform Visual Studio Code from Microsoft
 EAPI=7
 HOMEPAGE=https://code.visualstudio.com
 IUSE=libsecret hunspell zsh-completion
+KEYWORDS=*
 LICENSE=Apache-2.0 BSD BSD-1 BSD-2 BSD-4 CC-BY-4.0 ISC LGPL-2.1+ Microsoft MIT MPL-2.0 openssl PYTHON TextMate-bundle Unlicense UoI-NCSA W3C
 RDEPEND=hunspell? ( app-text/hunspell ) libsecret? ( app-crypt/libsecret[crypt] ) app-accessibility/at-spi2-atk dev-libs/nss media-libs/alsa-lib media-libs/libpng:0/16 x11-libs/cairo >=x11-libs/gtk+-3.0 x11-libs/libnotify x11-libs/libxkbcommon x11-libs/libxkbfile x11-libs/libXScrnSaver x11-libs/libXtst x11-libs/pango
 RESTRICT=strip bindist
 SLOT=0
-SRC_URI=https://vscode.blob.core.windows.net/insider/0615c4f98b07b51d3be6a357e22afec119490c5a/code-insider-x64-1675124860.tar.gz -> vscode-bin-1.75.0_p1675124577.tar.gz
+SRC_URI=https://az764295.vo.msecnd.net/stable/e2816fe719a4026ffa1ee0189dc89bdfdbafb164/code-stable-x64-1675266941.tar.gz -> vscode-bin-1.75.0.tar.gz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	d410501a125f99ffb560b0c523cd3d1e	pax-utils	db85a3c508cf82c45f24b2723791cc93	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=be0450737c48c71ab5cd165a24dd1157
+_md5_=cc63afc7b72319265b515a6a84fea316
