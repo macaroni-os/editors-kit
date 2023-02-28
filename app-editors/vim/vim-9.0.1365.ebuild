@@ -12,7 +12,7 @@ inherit vim-doc flag-o-matic fdo-mime bash-completion-r1 python-single-r1 \
 
 DESCRIPTION="Vim, an improved vi-style text editor"
 HOMEPAGE="http://www.vim.org/ https://github.com/vim/vim"
-SRC_URI="https://github.com/vim/vim/archive/v9.0.1337/v9.0.1337.tar.gz -> vim-9.0.1337.tar.gz"
+SRC_URI="https://github.com/vim/vim/archive/v9.0.1365/v9.0.1365.tar.gz -> vim-9.0.1365.tar.gz"
 
 SLOT="0"
 LICENSE="vim"
