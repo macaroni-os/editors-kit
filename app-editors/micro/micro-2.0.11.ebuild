@@ -24,23 +24,20 @@ EGO_SUM=(
 	"github.com/kr/pty v1.1.1/go.mod"
 	"github.com/kr/text v0.1.0"
 	"github.com/kr/text v0.1.0/go.mod"
+	"github.com/layeh/gopher-luar v1.0.7"
+	"github.com/layeh/gopher-luar v1.0.7/go.mod"
 	"github.com/lucasb-eyer/go-colorful v1.0.3"
 	"github.com/lucasb-eyer/go-colorful v1.0.3/go.mod"
 	"github.com/mattn/go-isatty v0.0.11"
 	"github.com/mattn/go-isatty v0.0.11/go.mod"
 	"github.com/mitchellh/go-homedir v1.1.0"
 	"github.com/mitchellh/go-homedir v1.1.0/go.mod"
-	"github.com/p-e-w/go-runewidth v0.0.10-0.20200613030200-3e1705c5c059"
-	"github.com/p-e-w/go-runewidth v0.0.10-0.20200613030200-3e1705c5c059/go.mod"
 	"github.com/pmezard/go-difflib v1.0.0"
 	"github.com/pmezard/go-difflib v1.0.0/go.mod"
 	"github.com/rivo/uniseg v0.1.0"
 	"github.com/rivo/uniseg v0.1.0/go.mod"
-	"github.com/robertkrimen/otto v0.0.0-20191219234010-c382bd3c16ff"
-	"github.com/robertkrimen/otto v0.0.0-20191219234010-c382bd3c16ff/go.mod"
 	"github.com/sergi/go-diff v1.1.0"
 	"github.com/sergi/go-diff v1.1.0/go.mod"
-	"github.com/stretchr/objx v0.1.0"
 	"github.com/stretchr/objx v0.1.0/go.mod"
 	"github.com/stretchr/testify v1.4.0"
 	"github.com/stretchr/testify v1.4.0/go.mod"
@@ -49,26 +46,28 @@ EGO_SUM=(
 	"github.com/yuin/gopher-lua v0.0.0-20190206043414-8bfc7677f583/go.mod"
 	"github.com/yuin/gopher-lua v0.0.0-20191220021717-ab39c6098bdb"
 	"github.com/yuin/gopher-lua v0.0.0-20191220021717-ab39c6098bdb/go.mod"
-	"github.com/zyedidia/clipboard v1.0.3"
-	"github.com/zyedidia/clipboard v1.0.3/go.mod"
+	"github.com/zyedidia/clipper v0.0.0-20220613212750-517cd4a6c524"
+	"github.com/zyedidia/clipper v0.0.0-20220613212750-517cd4a6c524/go.mod"
+	"github.com/zyedidia/clipper v0.1.0"
+	"github.com/zyedidia/clipper v0.1.0/go.mod"
 	"github.com/zyedidia/glob v0.0.0-20170209203856-dd4023a66dc3"
 	"github.com/zyedidia/glob v0.0.0-20170209203856-dd4023a66dc3/go.mod"
 	"github.com/zyedidia/go-runewidth v0.0.12"
 	"github.com/zyedidia/go-runewidth v0.0.12/go.mod"
 	"github.com/zyedidia/go-shellquote v0.0.0-20200613203517-eccd813c0655"
 	"github.com/zyedidia/go-shellquote v0.0.0-20200613203517-eccd813c0655/go.mod"
-	"github.com/zyedidia/highlight v0.0.0-20170330143449-201131ce5cf5"
-	"github.com/zyedidia/highlight v0.0.0-20170330143449-201131ce5cf5/go.mod"
 	"github.com/zyedidia/json5 v0.0.0-20200102012142-2da050b1a98d"
 	"github.com/zyedidia/json5 v0.0.0-20200102012142-2da050b1a98d/go.mod"
 	"github.com/zyedidia/poller v1.0.1"
 	"github.com/zyedidia/poller v1.0.1/go.mod"
-	"github.com/zyedidia/pty v2.0.0+incompatible"
-	"github.com/zyedidia/pty v2.0.0+incompatible/go.mod"
-	"github.com/zyedidia/tcell/v2 v2.0.6"
-	"github.com/zyedidia/tcell/v2 v2.0.6/go.mod"
-	"github.com/zyedidia/tcell/v2 v2.0.7"
-	"github.com/zyedidia/tcell/v2 v2.0.7/go.mod"
+	"github.com/zyedidia/pty v1.1.15"
+	"github.com/zyedidia/pty v1.1.15/go.mod"
+	"github.com/zyedidia/pty v1.1.19"
+	"github.com/zyedidia/pty v1.1.19/go.mod"
+	"github.com/zyedidia/pty v1.1.20"
+	"github.com/zyedidia/pty v1.1.20/go.mod"
+	"github.com/zyedidia/tcell/v2 v2.0.9"
+	"github.com/zyedidia/tcell/v2 v2.0.9/go.mod"
 	"github.com/zyedidia/terminal v0.0.0-20180726154117-533c623e2415"
 	"github.com/zyedidia/terminal v0.0.0-20180726154117-533c623e2415/go.mod"
 	"golang.org/x/sys v0.0.0-20190204203706-41f3e6584952/go.mod"
@@ -82,20 +81,16 @@ EGO_SUM=(
 	"gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod"
 	"gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15"
 	"gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15/go.mod"
-	"gopkg.in/sourcemap.v1 v1.0.5"
-	"gopkg.in/sourcemap.v1 v1.0.5/go.mod"
 	"gopkg.in/yaml.v2 v2.2.2/go.mod"
 	"gopkg.in/yaml.v2 v2.2.4/go.mod"
-	"gopkg.in/yaml.v2 v2.2.7"
-	"gopkg.in/yaml.v2 v2.2.7/go.mod"
-	"layeh.com/gopher-luar v1.0.7"
-	"layeh.com/gopher-luar v1.0.7/go.mod"
+	"gopkg.in/yaml.v2 v2.2.8"
+	"gopkg.in/yaml.v2 v2.2.8/go.mod"
 )
 
 go-module_set_globals
 
-SRC_URI="https://github.com/zyedidia/micro/archive/v2.0.9.tar.gz -> micro-v2.0.9.tar.gz
-	${EGO_SUM_SRC_URI}"
+SRC_URI="https://github.com/zyedidia/micro/tarball/225927b9a25f0d50ea63ea18bc7bb68e404c0cfd -> micro-2.0.11-225927b.tar.gz
+https://direct.funtoo.org/ca/6f/8e/ca6f8e4d2af250c2ad8b0294342ce93c2055ca343bdf9cf6d2f9413da6e372b31014dc0abe37135238f47ba3466ae3a7f0ad7592cab972970f3abdc57824a538 -> micro-2.0.11-funtoo-go-bundle-5daf8a0891ba3b2ea8a58c524097c8dbce307168d702c461d1ca03d69a715306bf21e48bf77b55bf1a4d778b31cd3b5f28ce3d1b14f968f41a206c071d6be19f.tar.gz"
 
 DESCRIPTION="A modern and intuitive terminal-based text editor"
 HOMEPAGE="https://micro-editor.github.io https://github.com/zyedidia/micro"
@@ -113,8 +108,8 @@ RDEPEND="|| (
 	wayland? ( gui-apps/wl-clipboard )
 )"
 
-src_unpack() {
-	go-module_src_unpack
+post_src_unpack() {
+	mv ${WORKDIR}/zyedidia-* ${S} || die
 }
 
 src_compile() {

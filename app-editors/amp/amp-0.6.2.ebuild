@@ -171,7 +171,7 @@ HOMEPAGE="https://github.com/jmacdonald/amp"
 SRC_URI="https://api.github.com/repos/jmacdonald/amp/tarball/0.6.2 -> amp-0.6.2.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 
-LICENSE="GPL3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="*"
 IUSE="X"
