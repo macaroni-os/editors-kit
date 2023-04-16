@@ -10,5 +10,5 @@ RDEPEND=|| ( !wayland? ( x11-misc/xsel x11-misc/xclip ) wayland? ( gui-apps/wl-c
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/zyedidia/micro/tarball/225927b9a25f0d50ea63ea18bc7bb68e404c0cfd -> micro-2.0.11-225927b.tar.gz https://direct.funtoo.org/ca/6f/8e/ca6f8e4d2af250c2ad8b0294342ce93c2055ca343bdf9cf6d2f9413da6e372b31014dc0abe37135238f47ba3466ae3a7f0ad7592cab972970f3abdc57824a538 -> micro-2.0.11-funtoo-go-bundle-5daf8a0891ba3b2ea8a58c524097c8dbce307168d702c461d1ca03d69a715306bf21e48bf77b55bf1a4d778b31cd3b5f28ce3d1b14f968f41a206c071d6be19f.tar.gz
-_eclasses_=go-module	7aad60675732a578d7eb16e3e26a47e8	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=go-module	cb10a443c46556a15ed035d7a99128e8	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=523e7d0b2a14ffd574d8f84b8f28c436
