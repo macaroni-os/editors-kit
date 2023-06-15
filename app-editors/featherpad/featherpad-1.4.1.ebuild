@@ -6,7 +6,7 @@ inherit xdg cmake kde5
 
 DESCRIPTION="Lightweight Qt5 Plain-Text Editor for Linux"
 HOMEPAGE="https://github.com/tsujan/FeatherPad"
-SRC_URI="https://github.com/tsujan/FeatherPad/releases/download/V1.4.0/FeatherPad-1.4.0.tar.xz -> FeatherPad-1.4.0.tar.xz"
+SRC_URI="https://github.com/tsujan/FeatherPad/releases/download/V1.4.1/FeatherPad-1.4.1.tar.xz -> FeatherPad-1.4.1.tar.xz"
 S="${WORKDIR}/FeatherPad-${PV}"
 
 LICENSE="GPL-3+"
