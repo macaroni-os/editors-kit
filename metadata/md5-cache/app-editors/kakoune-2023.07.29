@@ -8,6 +8,6 @@ KEYWORDS=*
 LICENSE=Unlicense
 RDEPEND=sys-libs/ncurses:0=
 SLOT=0
-SRC_URI=https://api.github.com/repos/mawww/kakoune/tarball/v2022.10.31 -> kakoune-2022.10.31.tar.gz
+SRC_URI=https://api.github.com/repos/mawww/kakoune/tarball/v2023.07.29 -> kakoune-2023.07.29.tar.gz
 _eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=a7ce76f6e32903be0bd67fd91e8f4c18
+_md5_=ce9d442ee1556baba428794bdf525a23
