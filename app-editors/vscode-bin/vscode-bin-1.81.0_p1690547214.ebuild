@@ -5,12 +5,12 @@ EAPI=7
 inherit bash-completion-r1 desktop eutils pax-utils xdg
 
 MY_INSTALL_DIR="/opt/${PN}"
-MY_EXEC="code"
+MY_EXEC="code-insiders"
 MY_PN=${PN/-bin/}
 
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
-SRC_URI="https://az764295.vo.msecnd.net/stable/74f6148eb9ea00507ec113ec51c489d6ffb4b771/code-stable-x64-1689183979.tar.gz -> vscode-bin-1.80.1.tar.gz"
+SRC_URI="https://az764295.vo.msecnd.net/insider/9800cf6dd6bf4634889d60720ef46a400f3a7298/code-insider-x64-1690546089.tar.gz -> vscode-bin-1.81.0_p1690547214.tar.gz"
 RESTRICT="strip bindist"
 LICENSE="
 	Apache-2.0
@@ -31,7 +31,7 @@ LICENSE="
 	UoI-NCSA
 	W3C"
 SLOT="0"
-KEYWORDS="*"
+KEYWORDS=""
 IUSE="libsecret hunspell zsh-completion"
 DEPEND=""
 RDEPEND="
@@ -73,6 +73,26 @@ src_prepare() {
 	default
 
 
+	pushd resources/completions
+
+	pushd bash
+	mv "${MY_EXEC}" code || die "bash completion file not found"
+	popd
+
+	if use zsh-completion; then
+		pushd zsh
+		mv _"${MY_EXEC}" _code || die "zsh completion file not found"
+		popd
+	fi
+
+	popd
+
+	sed -i "s/${MY_EXEC}/code/g" resources/completions/bash/code || die "failed to replace in bash completion file"
+
+	if use zsh-completion; then
+		sed -i "s/${MY_EXEC}/code/g" resources/completions/zsh/_code || die "failed to replace in zsh completion file"
+	fi
+
 }
 
 src_install() {
@@ -112,6 +132,8 @@ src_install() {
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/@vscode/ripgrep/bin/rg"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/@vscode/spdlog/build/Release/spdlog.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/@vscode/sqlite3/build/Release/vscode-sqlite3.node"
+	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/kerberos/build/Release/kerberos.node"
+	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/kerberos/build/Release/obj.target/kerberos.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/keytar/build/Release/keytar.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/keytar/build/Release/obj.target/keytar.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node"
