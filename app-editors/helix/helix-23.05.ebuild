@@ -6,7 +6,7 @@ inherit cargo
 
 DESCRIPTION="A post-modern modal text editor"
 HOMEPAGE="https://github.com/helix-editor/helix"
-SRC_URI="https://github.com/helix-editor/helix/tarball/7f5940be80eaa3aec7903903072b7108f41dd97b -> helix-23.05-7f5940b.tar.gz
+SRC_URI="https://github.com/helix-editor/helix/tarball/1c7c4baeac5e30b7439889b38477b08089feafb4 -> helix-23.05-1c7c4ba.tar.gz
 https://direct.funtoo.org/7a/bd/40/7abd400ec1f50f4481230a8a86e5480ac888259583c33afeb804583eecbba332047e9d070fe6d9263e9503453cac1b6fec8f6241f93cd478cb369ea9fe644564 -> helix-23.05-funtoo-crates-bundle-221af6fa218ad40bc26ec4c46133d08459e28fd0c00b8d9e46e5d2b9ce23861b6b1df2677b43221666d1dbf69e3e7963f4c295300f21108360777f16649b57d9.tar.gz"
 
 LICENSE="MPL-2.0"
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="*"
 IUSE="doc"
 
-S="${WORKDIR}/helix-editor-helix-7f5940b"
+S="${WORKDIR}/helix-editor-helix-1c7c4ba"
 
 src_compile() {
 	export HELIX_DISABLE_AUTO_GRAMMAR_BUILD=1

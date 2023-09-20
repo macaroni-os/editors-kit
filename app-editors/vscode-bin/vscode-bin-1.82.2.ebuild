@@ -10,7 +10,7 @@ MY_PN=${PN/-bin/}
 
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
-SRC_URI="https://az764295.vo.msecnd.net/stable/6c3e3dba23e8fadc360aed75ce363ba185c49794/code-stable-x64-1691619534.tar.gz -> vscode-bin-1.81.1.tar.gz"
+SRC_URI="https://az764295.vo.msecnd.net/stable/abd2f3db4bdb28f9e95536dfa84d8479f1eb312d/code-stable-x64-1694670691.tar.gz -> vscode-bin-1.82.2.tar.gz"
 RESTRICT="strip bindist"
 LICENSE="
 	Apache-2.0
@@ -120,7 +120,6 @@ src_install() {
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/native-keymap/build/Release/keymapping.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/native-watchdog/build/Release/watchdog.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/node-pty/build/Release/pty.node"
-	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/vscode-encrypt/build/Release/vscode-encrypt-native.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/vsda/build/Release/vsda.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/windows-foreground-love/build/Release/foreground_love.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/windows-foreground-love/build/Release/obj.target/foreground_love.node"
