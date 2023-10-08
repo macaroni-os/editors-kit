@@ -5,12 +5,12 @@ EAPI=7
 inherit bash-completion-r1 desktop eutils pax-utils xdg
 
 MY_INSTALL_DIR="/opt/${PN}"
-MY_EXEC="code"
+MY_EXEC="code-insiders"
 MY_PN=${PN/-bin/}
 
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
-SRC_URI="https://az764295.vo.msecnd.net/stable/abd2f3db4bdb28f9e95536dfa84d8479f1eb312d/code-stable-x64-1694670691.tar.gz -> vscode-bin-1.82.2.tar.gz"
+SRC_URI="https://az764295.vo.msecnd.net/insider/874831ebcf088f59735879156f62308ce48f17d1/code-insider-x64-1696619311.tar.gz -> vscode-bin-1.84.0_p1696620592.tar.gz"
 RESTRICT="strip bindist"
 LICENSE="
 	Apache-2.0
@@ -31,7 +31,7 @@ LICENSE="
 	UoI-NCSA
 	W3C"
 SLOT="0"
-KEYWORDS="*"
+KEYWORDS=""
 IUSE="libsecret hunspell zsh-completion"
 DEPEND=""
 RDEPEND="
@@ -72,6 +72,26 @@ pkg_setup() {
 src_prepare() {
 	default
 
+
+	pushd resources/completions
+
+	pushd bash
+	mv "${MY_EXEC}" code || die "bash completion file not found"
+	popd
+
+	if use zsh-completion; then
+		pushd zsh
+		mv _"${MY_EXEC}" _code || die "zsh completion file not found"
+		popd
+	fi
+
+	popd
+
+	sed -i "s/${MY_EXEC}/code/g" resources/completions/bash/code || die "failed to replace in bash completion file"
+
+	if use zsh-completion; then
+		sed -i "s/${MY_EXEC}/code/g" resources/completions/zsh/_code || die "failed to replace in zsh completion file"
+	fi
 
 }
 
@@ -114,8 +134,6 @@ src_install() {
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/@vscode/sqlite3/build/Release/vscode-sqlite3.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/kerberos/build/Release/kerberos.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/kerberos/build/Release/obj.target/kerberos.node"
-	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/keytar/build/Release/keytar.node"
-	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/keytar/build/Release/obj.target/keytar.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/native-keymap/build/Release/keymapping.node"
 	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/native-watchdog/build/Release/watchdog.node"
