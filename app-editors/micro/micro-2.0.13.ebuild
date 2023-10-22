@@ -61,12 +61,16 @@ EGO_SUM=(
 	"github.com/zyedidia/json5 v0.0.0-20200102012142-2da050b1a98d/go.mod"
 	"github.com/zyedidia/poller v1.0.1"
 	"github.com/zyedidia/poller v1.0.1/go.mod"
+	"github.com/zyedidia/tcell/v2 v2.0.9"
+	"github.com/zyedidia/tcell/v2 v2.0.9/go.mod"
 	"github.com/zyedidia/tcell/v2 v2.0.10-0.20221007181625-f562052bccb8"
 	"github.com/zyedidia/tcell/v2 v2.0.10-0.20221007181625-f562052bccb8/go.mod"
 	"github.com/zyedidia/tcell/v2 v2.0.10-0.20230320201625-54f6acdada4a"
 	"github.com/zyedidia/tcell/v2 v2.0.10-0.20230320201625-54f6acdada4a/go.mod"
 	"github.com/zyedidia/tcell/v2 v2.0.10-0.20230831153116-061c5b2c7260"
 	"github.com/zyedidia/tcell/v2 v2.0.10-0.20230831153116-061c5b2c7260/go.mod"
+	"github.com/zyedidia/tcell/v2 v2.0.10"
+	"github.com/zyedidia/tcell/v2 v2.0.10/go.mod"
 	"github.com/zyedidia/terminal v0.0.0-20230315200948-4b3bcf6dddef"
 	"github.com/zyedidia/terminal v0.0.0-20230315200948-4b3bcf6dddef/go.mod"
 	"golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod"
@@ -108,8 +112,8 @@ EGO_SUM=(
 
 go-module_set_globals
 
-SRC_URI="https://github.com/zyedidia/micro/tarball/c2cebaa3d19fbdd924d411ee393c03e3e7804435 -> micro-2.0.12-c2cebaa.tar.gz
-https://direct.funtoo.org/34/bc/de/34bcde7d6d87af78e8cad2143a60eeb1e1318a575ebe44a421edb152f3175abc678006728df9427b87f213fc2571c341eb211b06e32626adaebdd300277fa935 -> micro-2.0.12-funtoo-go-bundle-33847c0104e02c1200e3a4e90a5a71b09454ec5a7c5596494069607a43cd35b595bc2bebd06c755a37c5c111aede475a4b594a6d9250a06d85f5a3f1cfcaa11e.tar.gz"
+SRC_URI="https://github.com/zyedidia/micro/tarball/68d88b571de6dca9fb8f03e2a3caafa2287c38d4 -> micro-2.0.13-68d88b5.tar.gz
+https://direct.funtoo.org/2c/89/8e/2c898eaa6efdb5313f6057b2567a4e3d2063759e1114c8a386d0e6f0f0cb53995a781c5858c025466e8f0658380f422ef025a5fa42a5889984a2ad91635c09e5 -> micro-2.0.13-funtoo-go-bundle-7fb055b80974ebb8558c28999de2782684a64a9f83c447ead70ce38f1a896b116c9b42103b3b427665722e1345317eaf5faa6e179f93122c3d70e79c63837196.tar.gz"
 
 DESCRIPTION="A modern and intuitive terminal-based text editor"
 HOMEPAGE="https://micro-editor.github.io https://github.com/zyedidia/micro"
