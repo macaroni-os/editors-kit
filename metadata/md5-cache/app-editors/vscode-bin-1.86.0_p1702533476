@@ -8,6 +8,6 @@ LICENSE=Apache-2.0 BSD BSD-1 BSD-2 BSD-4 CC-BY-4.0 ISC LGPL-2.1+ Microsoft MIT M
 RDEPEND=hunspell? ( app-text/hunspell ) libsecret? ( app-crypt/libsecret[crypt] ) app-accessibility/at-spi2-atk dev-libs/nss media-libs/alsa-lib media-libs/libpng:0/16 x11-libs/cairo >=x11-libs/gtk+-3.0 x11-libs/libnotify x11-libs/libxkbcommon x11-libs/libxkbfile x11-libs/libXScrnSaver x11-libs/libXtst x11-libs/pango
 RESTRICT=strip bindist
 SLOT=0
-SRC_URI=https://vscode.download.prss.microsoft.com/dbazure/download/insider/f87fb292c3af22e51a7f5c628496cd8d6fd9ecd5/code-insider-x64-1702454855.tar.gz -> vscode-bin-1.86.0_p1702456101.tar.gz
+SRC_URI=https://vscode.download.prss.microsoft.com/dbazure/download/insider/789c802e75813bfb38ff2e13e4b322bd7e90124b/code-insider-x64-1702532230.tar.gz -> vscode-bin-1.86.0_p1702533476.tar.gz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	d410501a125f99ffb560b0c523cd3d1e	pax-utils	db85a3c508cf82c45f24b2723791cc93	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=1f61fcaadba68cb7a41e30d86a4ed757
+_md5_=719b67d835608f8476cddb6f9f956a76
