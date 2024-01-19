@@ -5,12 +5,12 @@ EAPI=7
 inherit bash-completion-r1 desktop eutils pax-utils xdg
 
 MY_INSTALL_DIR="/opt/${PN}"
-MY_EXEC="code-insiders"
+MY_EXEC="code"
 MY_PN=${PN/-bin/}
 
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
-SRC_URI="https://vscode.download.prss.microsoft.com/dbazure/download/insider/0b571a26e213bf1ec6266e37152ced80c006bd1e/code-insider-x64-1705556157.tar.gz -> vscode-bin-1.86.0_p1705557429.tar.gz"
+SRC_URI="https://vscode.download.prss.microsoft.com/dbazure/download/stable/8b3775030ed1a69b13e4f4c628c612102e30a681/code-stable-x64-1705560028.tar.gz -> vscode-bin-1.85.2.tar.gz"
 RESTRICT="strip bindist"
 LICENSE="
 	Apache-2.0
@@ -31,7 +31,7 @@ LICENSE="
 	UoI-NCSA
 	W3C"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="*"
 IUSE="libsecret hunspell zsh-completion"
 DEPEND=""
 RDEPEND="
@@ -72,26 +72,6 @@ pkg_setup() {
 src_prepare() {
 	default
 
-
-	pushd resources/completions
-
-	pushd bash
-	mv "${MY_EXEC}" code || die "bash completion file not found"
-	popd
-
-	if use zsh-completion; then
-		pushd zsh
-		mv _"${MY_EXEC}" _code || die "zsh completion file not found"
-		popd
-	fi
-
-	popd
-
-	sed -i "s/${MY_EXEC}/code/g" resources/completions/bash/code || die "failed to replace in bash completion file"
-
-	if use zsh-completion; then
-		sed -i "s/${MY_EXEC}/code/g" resources/completions/zsh/_code || die "failed to replace in zsh completion file"
-	fi
 
 }
 
