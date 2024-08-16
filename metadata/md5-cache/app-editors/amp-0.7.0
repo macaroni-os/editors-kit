@@ -1,0 +1,13 @@
+BDEPEND=virtual/rust dev-util/cmake >=virtual/rust-1.37.0
+DEFINED_PHASES=compile configure install test unpack
+DESCRIPTION=A complete text editor for your terminal
+EAPI=7
+HOMEPAGE=https://github.com/jmacdonald/amp
+IUSE=X debug
+KEYWORDS=*
+LICENSE=GPL-3
+RDEPEND=dev-vcs/git X? ( x11-libs/libxcb ) dev-libs/openssl sys-libs/zlib
+SLOT=0
+SRC_URI=https://github.com/jmacdonald/amp/tarball/55edadcd7c6856fc19f32cd630a618b0dc7f2bc3 -> amp-0.7.0-55edadc.tar.gz https://distfiles.macaronios.org/e6/ec/55/e6ec55770070699a57d0da5d69f3277e4d5b8e7de6dab5c52b03686f84807ce9a8fd75918452b28e92a65c69b4442bafcc882a1d6e322fac8e3ab68d27819768 -> amp-0.7.0-funtoo-crates-bundle-6f50eb6f737e8070128a8b0d5989788fe04a0a9736096450539bebebab329a44602540480df3221d174ef9de433c9e5e6c1c695fc8ca73e4a2692d30680319f8.tar.gz
+_eclasses_=cargo	a3e90d3e6ca8541d967cff212149cffc	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=e51b31a2652cb8b4867da6aaee292220

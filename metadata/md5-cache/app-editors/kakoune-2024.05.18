@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=sys-libs/ncurses:0=
+DESCRIPTION=Modal editor inspired by vim
+EAPI=7
+HOMEPAGE=http://kakoune.org/ https://github.com/mawww/kakoune
+KEYWORDS=*
+LICENSE=Unlicense
+RDEPEND=sys-libs/ncurses:0=
+SLOT=0
+SRC_URI=https://api.github.com/repos/mawww/kakoune/tarball/v2024.05.18 -> kakoune-2024.05.18.tar.gz
+_eclasses_=multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=74c13c2fd8b2685dcaf17db26ab50eda
