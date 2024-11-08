@@ -59,7 +59,6 @@ PATCHES=(
 	"${FILESDIR}/vim-7.0-automake-substitutions-93378.patch"
 	"${FILESDIR}/vim-7.0-grub-splash-96155.patch"
 	"${FILESDIR}/vim-7.1-ada-default-compiler.patch"
-	"${FILESDIR}/vim-8.2.5066-crosscompile.patch"
 	"${FILESDIR}/vim-8.2.0210-python3-shared-lib.patch"
 )
 
