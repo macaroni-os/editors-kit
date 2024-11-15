@@ -10,7 +10,7 @@ MY_PN=${PN/-bin/}
 
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
-SRC_URI="https://update.code.visualstudio.com/1.95.2/linux-x64/stable -> vscode-bin-1.95.2.tar.gz"
+SRC_URI="https://update.code.visualstudio.com/1.95.3/linux-x64/stable -> vscode-bin-1.95.3.tar.gz"
 RESTRICT="strip bindist"
 LICENSE="
 	Apache-2.0
