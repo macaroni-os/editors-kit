@@ -9,6 +9,6 @@ LICENSE=Apache-2.0 BSD BSD-1 BSD-2 BSD-4 CC-BY-4.0 ISC LGPL-2.1+ Microsoft MIT M
 RDEPEND=hunspell? ( app-text/hunspell ) libsecret? ( app-crypt/libsecret[crypt] ) app-accessibility/at-spi2-atk dev-libs/nss media-libs/alsa-lib media-libs/libpng:0/16 x11-libs/cairo >=x11-libs/gtk+-3.0 x11-libs/libnotify x11-libs/libxkbcommon x11-libs/libxkbfile x11-libs/libXScrnSaver x11-libs/libXtst x11-libs/pango
 RESTRICT=strip bindist
 SLOT=0
-SRC_URI=https://update.code.visualstudio.com/1.95.3/linux-x64/stable -> vscode-bin-1.95.3.tar.gz
+SRC_URI=https://update.code.visualstudio.com/1.96.0/linux-x64/stable -> vscode-bin-1.96.0.tar.gz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	d410501a125f99ffb560b0c523cd3d1e	pax-utils	db85a3c508cf82c45f24b2723791cc93	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=7f3633a5c949cb4eb87999c41d9b07ca
+_md5_=e4e816fa6d56e8702acd5444d2540f38
