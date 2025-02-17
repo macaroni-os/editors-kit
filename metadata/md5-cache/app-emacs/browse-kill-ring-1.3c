@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=An improved interface to kill-ring
+EAPI=4
+HOMEPAGE=https://www.emacswiki.org/emacs/BrowseKillRing https://github.com/T-J-Teru/browse-kill-ring
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=mirror://gentoo/browse-kill-ring-1.3c.el.bz2
+_eclasses_=elisp	efe1c459331d853614b12c63ab169a32	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	cb17fbe94a2c43cbc0f8e76abf15479a
+_md5_=be646652641940aa5dc7128e2f3358a1

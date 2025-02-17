@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=sys-libs/ncurses:0= !dev-java/nailgun canna? ( app-i18n/canna ) sys-apps/sed >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.5:1.16 ) >=sys-devel/autoconf-2.71 >=sys-devel/libtool-2.4
+DESCRIPTION=Emacs like micro editor Ng -- based on mg2a
+EAPI=6
+HOMEPAGE=http://tt.sakura.ne.jp/~amura/ng/
+IUSE=canna
+KEYWORDS=amd64 ppc x86
+LICENSE=Emacs
+RDEPEND=sys-libs/ncurses:0= !dev-java/nailgun canna? ( app-i18n/canna )
+SLOT=0
+SRC_URI=http://tt.sakura.ne.jp/~amura/archives/ng/ng-1.5beta1.tar.gz
+_eclasses_=autotools	e9ade2787b2f54643c7cdffbfa1cca9c	eqawarn	bb3d80ca38bc542ed397ab65f64256a6	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=7f21b4fdae1bd23a3e5933c0ccdd8151
