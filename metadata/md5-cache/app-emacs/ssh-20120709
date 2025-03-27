@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=Support for SSH sessions in Emacs shell buffers
+EAPI=5
+HOMEPAGE=http://www.splode.com/~friedman/software/emacs-lisp/index.html#ssh
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/ssh-20120709.el.xz
+_eclasses_=elisp	efe1c459331d853614b12c63ab169a32	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	cb17fbe94a2c43cbc0f8e76abf15479a
+_md5_=6a02d9ef2357593fecc321e4831db3cb
