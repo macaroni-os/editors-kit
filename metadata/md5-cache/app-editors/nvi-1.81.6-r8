@@ -1,0 +1,15 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.5:1.16 ) >=sys-devel/autoconf-2.71 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install postinst postrm prepare
+DEPEND=>=sys-libs/db-4.2.52_p5:= >=sys-libs/ncurses-5.6-r2:= perl? ( dev-lang/perl ) tcl? ( >=dev-lang/tcl-8.5:0= ) virtual/pkgconfig
+DESCRIPTION=Vi clone
+EAPI=7
+HOMEPAGE=https://sites.google.com/a/bostic.com/keithbostic/vi
+IUSE=perl tcl unicode
+KEYWORDS=*
+LICENSE=BSD
+RDEPEND=>=sys-libs/db-4.2.52_p5:= >=sys-libs/ncurses-5.6-r2:= perl? ( dev-lang/perl ) tcl? ( >=dev-lang/tcl-8.5:0= ) app-eselect/eselect-vi
+REQUIRED_USE=tcl? ( !unicode )
+SLOT=0
+SRC_URI=https://mirror.csclub.uwaterloo.ca/MacPorts/mpdistfiles/nvi/nvi-1.81.6.tar.bz2 -> nvi-1.81.6.tar.bz2
+_eclasses_=autotools	e9ade2787b2f54643c7cdffbfa1cca9c	db-use	501a5d0963e0d17f30260023f292ae8e	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	d0939f99dd528dd0c5ec25284877bf5c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_md5_=0fd751d3b6dfe5616496299033fa9a39
