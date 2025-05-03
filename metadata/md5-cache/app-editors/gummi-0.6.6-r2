@@ -1,0 +1,12 @@
+DEFINED_PHASES=postinst postrm prepare
+DEPEND=app-text/gtkspell:2 app-text/poppler[cairo] dev-libs/glib:2 dev-texlive/texlive-latex dev-texlive/texlive-latexextra x11-libs/gtk+:2 x11-libs/gtksourceview:2.0 x11-libs/pango >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.5:1.16 ) >=sys-devel/autoconf-2.71 >=sys-devel/libtool-2.4
+DESCRIPTION=Simple LaTeX editor for GTK+ users
+EAPI=6
+HOMEPAGE=https://github.com/alexandervdm/gummi
+KEYWORDS=amd64 ~arm64 x86
+LICENSE=MIT
+RDEPEND=app-text/gtkspell:2 app-text/poppler[cairo] dev-libs/glib:2 dev-texlive/texlive-latex dev-texlive/texlive-latexextra x11-libs/gtk+:2 x11-libs/gtksourceview:2.0 x11-libs/pango
+SLOT=0
+SRC_URI=https://github.com/alexandervdm/gummi/archive/0.6.6.tar.gz -> gummi-0.6.6.tar.gz
+_eclasses_=autotools	e9ade2787b2f54643c7cdffbfa1cca9c	eqawarn	bb3d80ca38bc542ed397ab65f64256a6	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=6877d41a8c9c24001d8d8e99947fab4e
