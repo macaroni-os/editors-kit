@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
+DEPEND=sys-apps/texinfo >=virtual/emacs-23
+DESCRIPTION=A modern list library for Emacs
+EAPI=5
+HOMEPAGE=https://github.com/magnars/dash.el
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3+
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=https://github.com/magnars/dash.el/archive/2.13.0.tar.gz -> dash-2.13.0.tar.gz
+_eclasses_=elisp	efe1c459331d853614b12c63ab169a32	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	cb17fbe94a2c43cbc0f8e76abf15479a
+_md5_=ec6f430e0dbf9ddd86bd15258dc71305
