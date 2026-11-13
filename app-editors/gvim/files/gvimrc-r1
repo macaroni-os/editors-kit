@@ -24,6 +24,6 @@ endif
 " as expected in insert and command-line modes
 map! <s-insert> <c-r>*
 
-if filereadable("@GENTOO_PORTAGE_EPREFIX@/etc/vim/gvimrc.local")
-  source @GENTOO_PORTAGE_EPREFIX@/etc/vim/gvimrc.local
+if filereadable("/etc/vim/gvimrc.local")
+  source /etc/vim/gvimrc.local
 endif
